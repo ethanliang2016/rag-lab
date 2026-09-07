@@ -7,3 +7,4 @@
 {"id": "skillspector", "domain": "ai", "title": "我用 NVIDIA SkillSpector 纯静态扫了一遍 GitHub 最火的 agent skills：能挖出多少注入？0 个", "chars": 7142, "source": "AI情报收集/深度实测/SkillSpector-skills注入实测/SkillSpector-skills注入实测-CSDN稿.md"}
 {"id": "glm53", "domain": "ai", "title": "GLM-5.3 vs GLM-5.2 · 同题实测报告 v2(同基座两代对照)", "chars": 5042, "source": "AI情报收集/深度实测/GLM-5.3实测/GLM5.3-vs-GLM5.2-同题实测报告v2.md"}
 {"id": "hy4-glm", "domain": "ai", "title": "Hy4 vs GLM-5.3 · 同题实测报告 v1(官方数据对比版)", "chars": 7250, "source": "AI情报收集/深度实测/Hy4-vs-GLM5.3实测/Hy4-vs-GLM5.3-实测报告.md"}
+{"id": "codereview", "domain": "ai", "title": "AI 代码占比 40% 之后,我把团队的 Code Review 规范推翻重写了", "chars": 3850, "source": "站内已发布稿(2026-08-31),正文自 blog.csdn.net/weixin_39885962/article/details/164230705 抓取清洗"}

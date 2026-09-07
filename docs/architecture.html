@@ -84,17 +84,17 @@
 <div class="page">
 
 <h1>rag-lab 系统架构说明</h1>
-<div class="subtitle">中文技术语料上的 RAG 分块策略评测系统 —— 3 种策略 × 3 种粒度 × 90 题</div>
-<div class="meta">v1.0 · 2026-09-07 · 仓库:github.com/ethanliang2016/rag-lab · 配套文章:《RAG 分块策略实测:固定窗口 vs 递归切分 vs 结构感知,用 90 道题说话》</div>
+<div class="subtitle">中文技术语料上的 RAG 分块策略评测系统 —— 3 种策略 × 3 种粒度 × 100 题</div>
+<div class="meta">v1.1 · 2026-09-07 · 仓库:github.com/ethanliang2016/rag-lab · 配套文章:《RAG 分块策略实测:固定窗口 vs 递归切分 vs 结构感知,用 100 道题说话》</div>
 <div class="rule"></div>
 
 <h2><span class="no">1</span>系统概述</h2>
-<p>rag-lab 是一套单机、纯本地运行的 RAG 检索层评测系统。它把 9 篇中文技术长文(已发布 6 篇、未发稿 3 篇)按 9 组"分块策略 × 粒度"配置切块、嵌入、入内存向量库,再用 90 道标注题逐组检索,输出可横向对比的命中率指标(Hit@1 / Hit@5 / MRR@5,按 A/B 档分层)。系统的唯一目的是回答一个问题:<b>分块策略的差异,在数字上到底有多大</b>——因此一切设计都服从"单变量对照"这一原则。</p>
+<p>rag-lab 是一套单机、纯本地运行的 RAG 检索层评测系统。它把 10 篇中文技术长文(已发布 7 篇、未发稿 3 篇)按 9 组"分块策略 × 粒度"配置切块、嵌入、入内存向量库,再用 100 道标注题逐组检索,输出可横向对比的命中率指标(Hit@1 / Hit@5 / MRR@5,按 A/B 档分层)。系统的唯一目的是回答一个问题:<b>分块策略的差异,在数字上到底有多大</b>——因此一切设计都服从"单变量对照"这一原则。</p>
 <div class="stats">
-  <div class="stat"><div class="v">9 篇</div><div class="l">语料 / 70,877 字符</div></div>
-  <div class="stat"><div class="v">90 题</div><div class="l">测试集 / A 档 27 · B 档 63</div></div>
+  <div class="stat"><div class="v">10 篇</div><div class="l">语料 / 74,727 字符</div></div>
+  <div class="stat"><div class="v">100 题</div><div class="l">测试集 / A 档 30 · B 档 70</div></div>
   <div class="stat"><div class="v">9 组</div><div class="l">配置 / 3 策略 × 3 粒度</div></div>
-  <div class="stat"><div class="v">810 次</div><div class="l">检索 / CPU 每组 9~14 秒</div></div>
+  <div class="stat"><div class="v">900 次</div><div class="l">检索 / CPU 每组 10~15 秒</div></div>
 </div>
 
 <h2><span class="no">2</span>架构总览</h2>
@@ -113,7 +113,7 @@
       <div class="arrow">→</div>
       <div class="node proc"><b>merge_questions.py</b><div class="s">结构校验 + 撞题检查</div></div>
       <div class="arrow">→</div>
-      <div class="node data"><b>questions.jsonl</b><div class="s">90 题 · A/B 档标注</div></div>
+      <div class="node data"><b>questions.jsonl</b><div class="s">100 题 · A/B 档标注</div></div>
     </div>
   </div>
   <div class="down">↓ ↓</div>
@@ -128,7 +128,7 @@
       <div class="arrow">→</div>
       <div class="node proc"><b>Chroma Ephemeral</b><div class="s">内存索引 · top-k=5</div></div>
       <div class="arrow">→</div>
-      <div class="node proc"><b>检索 + 指标</b><div class="s">90 题逐题 · A/B 分层</div></div>
+      <div class="node proc"><b>检索 + 指标</b><div class="s">100 题逐题 · A/B 分层</div></div>
     </div>
   </div>
   <div class="down">↓</div>
@@ -154,7 +154,7 @@
   <tr><td><code>src/ingest.py</code></td><td>语料清洗入库:按 MANIFEST 逐篇读取本地稿,剥系列导航行与状态注记行,代码块/表格原样保留</td><td>本地 md → <code>corpus/*.md</code> + <code>corpus.jsonl</code></td></tr>
   <tr><td><code>src/merge_questions.py</code></td><td>题库分片合并:结构校验(article_id/tier/id 合法性)、元指涉检查、6 字滑窗跨篇撞题初筛</td><td><code>questions-frag-*.jsonl</code> → <code>questions.jsonl</code></td></tr>
   <tr><td><code>src/chunkers.py</code></td><td>三种分块策略实现:固定字符窗口 / LangChain 递归切分(中文分隔符)/ Markdown 结构感知(按标题分节、代码块不切断);含代码块切断统计</td><td>文章 md → chunk 列表</td></tr>
-  <tr><td><code>src/run_eval.py</code></td><td>主评测循环:分块 → 嵌入 → 建 Chroma 内存索引 → 90 题逐题检索 → 指标计算与附加观察(切断数/跨域干扰/失效案例)</td><td>corpus + questions + configs → <code>results/results.json</code></td></tr>
+  <tr><td><code>src/run_eval.py</code></td><td>主评测循环:分块 → 嵌入 → 建 Chroma 内存索引 → 100 题逐题检索 → 指标计算与附加观察(切断数/跨域干扰/失效案例)</td><td>corpus + questions + configs → <code>results/results.json</code></td></tr>
   <tr><td><code>src/truncation_ablation.py</code></td><td>截断伪影对照:fixed-1024 的块分别保头/保尾 510 token 送嵌入,隔离"截断方向 × 信号位置"效应</td><td>corpus + questions → 截断对照数据</td></tr>
 </table>
 
@@ -162,23 +162,23 @@
 <h3>corpus.jsonl(语料元数据,每行一篇)</h3>
 <div class="code-block">{"id": "dsh-startup",        # 语料 slug,同目录 md 文件名
  "domain": "ai",              # ai | java(老文入库后启用)
- "title": "DeepSeek Harness 上手实录",
- "chars": 8433,               # 清洗后字符数
+ "title": "DeepSeek Harness 上手实录:Everything is a Plugin 是新范式还是新命名?",
+ "chars": 6404,               # 清洗后字符数
  "source": "AI情报收集/深度实测/DSH系列/...md"}  # 仓库外源路径</div>
 <h3>questions.jsonl(测试集,每行一题)</h3>
 <div class="code-block">{"id": "q-dsh-01",
  "question": "DSH 用 npm 发了多少个版本?",
  "article_id": "dsh-startup",  # ground truth(文章级)
- "tier": "B"}                  # A=主题级 27 题 / B=细节级 63 题</div>
+ "tier": "B"}                  # A=主题级 30 题 / B=细节级 70 题</div>
 <h3>results/results.json(每组配置一条记录)</h3>
 <div class="code-block">{"config": {"strategy": "fixed", "size": 1024},
- "chunks": 76,                 # 该配置切出的总块数
+ "chunks": 80,                 # 该配置切出的总块数
  "codeblock_cuts": 7,          # 代码块被切断次数
  "cross_domain": 0,            # java 文混入 ai 题 top-5 次数
  "metrics": {"overall": {...}, "A": {...}, "B": {...}},
                               # 每档含 n / hit1 / hit5 / mrr5
  "misses": [ ... ],            # Hit@1 未中的题逐题存档(写作素材)
- "seconds": 11.8}</div>
+ "seconds": 10.0}</div>
 
 <h2 class="pagebreak"><span class="no">5</span>关键设计决策</h2>
 <table class="avoid-break">
@@ -193,7 +193,7 @@
 
 <h2><span class="no">6</span>运行步骤</h2>
 <h3>环境要求</h3>
-<p class="muted">Python 3.10+;CPU 即可(每组 9~14 秒);无需 GPU、无需联网账号(嵌入模型自动从 hf-mirror 下载,首次运行约 90MB)。</p>
+<p class="muted">Python 3.10+;CPU 即可(每组 10~15 秒);无需 GPU、无需联网账号(嵌入模型自动从 hf-mirror 下载,首次运行约 90MB)。</p>
 <div class="code-block">git clone https://github.com/ethanliang2016/rag-lab && cd rag-lab
 pip install -r requirements.txt
 python src/run_eval.py                          # 全部 9 组(CPU 约 2 分钟)
@@ -204,7 +204,7 @@ python src/truncation_ablation.py               # 截断伪影对照</div>
 <h2><span class="no">7</span>目录结构</h2>
 <div class="code-block">rag-lab/
 ├── corpus/                  # 语料:规范化 md + corpus.jsonl 元数据
-├── questions.jsonl          # 测试集(90 题,A/B 档标注)
+├── questions.jsonl          # 测试集(100 题,A/B 档标注)
 ├── questions-frag-*.jsonl   # 出题分片(工作留档,复现测试集构建)
 ├── configs/                 # 9 组实验配置({strategy, size})
 ├── src/
@@ -221,10 +221,10 @@ python src/truncation_ablation.py               # 截断伪影对照</div>
 <ul>
   <li><b>主指标</b>:Hit@1 / Hit@5 / MRR@5,ground truth 在文章级——top-k 命中目标文章即记 hit,按 A 档(主题级)/ B 档(细节级)分层报数;</li>
   <li><b>附加观察</b>:代码块被切断次数、跨域干扰计数(java 文混入 ai 题 top-5)、失效案例存档;</li>
-  <li><b>诚实口径</b>:n=90 报分层观察,不做显著性检验;全实验 810 次检索为单次运行;结论不外推英文语料与其他文体。</li>
+  <li><b>诚实口径</b>:n=100 报分层观察,不做显著性检验;全实验 900 次检索为单次运行;结论不外推英文语料与其他文体。</li>
 </ul>
 
-<div class="foot">rag-lab 系统架构说明 v1.0 · 生成于 2026-09-07 · MIT License · 语料与测试集为本人原创,随仓库同授权</div>
+<div class="foot">rag-lab 系统架构说明 v1.1 · 生成于 2026-09-07 · MIT License · 语料与测试集为本人原创,随仓库同授权</div>
 
 </div>
 </body>

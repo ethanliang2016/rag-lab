@@ -1,0 +1,10 @@
+{"id": "codereview-01", "article_id": "codereview", "tier": "A", "question": "AI 代码占比高了之后团队的 code review 规范该怎么改"}
+{"id": "codereview-02", "article_id": "codereview", "tier": "A", "question": "怎么判断一段 AI 参与的代码算不算你自己的"}
+{"id": "codereview-03", "article_id": "codereview", "tier": "A", "question": "把 AI 代码生成占比写进 KPI 会出什么问题"}
+{"id": "codereview-04", "article_id": "codereview", "tier": "B", "question": "那次线上事故是什么服务出了什么故障"}
+{"id": "codereview-05", "article_id": "codereview", "tier": "B", "question": "离职同事当时让 Cursor 改了几版代码才合进去的"}
+{"id": "codereview-06", "article_id": "codereview", "tier": "B", "question": "判断代码所有权的两条标准具体是什么"}
+{"id": "codereview-07", "article_id": "codereview", "tier": "B", "question": "AI 辅助下高级工程师一周能产出多少行代码,认真读得动的又是多少行"}
+{"id": "codereview-08", "article_id": "codereview", "tier": "B", "question": "本地 pre-commit 阶段用什么工具扫 secrets 泄露"}
+{"id": "codereview-09", "article_id": "codereview", "tier": "B", "question": "覆盖率门禁按全量算有什么坑"}
+{"id": "codereview-10", "article_id": "codereview", "tier": "B", "question": "AGENTS.md 这种文件改动必须走什么流程"}

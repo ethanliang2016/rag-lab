@@ -11,7 +11,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ARTICLE_IDS = {"dsh-startup", "dsh-plugin", "dsh-market", "dsh-197pkg",
-               "arc-harness", "dsewiki", "skillspector", "glm53", "hy4-glm"}
+               "arc-harness", "dsewiki", "skillspector", "glm53", "hy4-glm",
+               "codereview"}
 META_RE = re.compile(r"这篇文章|作者|文中|本文")
 
 

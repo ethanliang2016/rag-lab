@@ -27,6 +27,8 @@ MANIFEST = [
     ("skillspector", "ai", "AI情报收集/深度实测/SkillSpector-skills注入实测/SkillSpector-skills注入实测-CSDN稿.md"),
     ("glm53",        "ai", "AI情报收集/深度实测/GLM-5.3实测/GLM5.3-vs-GLM5.2-同题实测报告v2.md"),
     ("hy4-glm",      "ai", "AI情报收集/深度实测/Hy4-vs-GLM5.3实测/Hy4-vs-GLM5.3-实测报告.md"),
+    # codereview:站内已发布稿,正文自详情页抓取清洗,源即 corpus/codereview.md(清洗后原样,重跑幂等)
+    ("codereview",   "ai", "rag-lab/corpus/codereview.md"),
     # java 域:站内导出后在此追加,如 ("spring-tx", "java", "AI情报收集/深度实测/RAG语料-java老文/spring事务.md")
 ]
 
