@@ -6,7 +6,7 @@
 
 用 9 篇中文技术长文做语料,90 道题做测试集,对比 3 种分块策略 × 3 种粒度共 9 组配置的检索命中率。不是教程,是一份带数字的评测报告。
 
-- **语料**:9 篇中文技术长文(DeepSeek Harness 实测 ×4 / ARC-AGI-3 harness / DseWiki 数据实拉 / SkillSpector 扫描 / GLM 对比 ×2),约 7 万字
+- **语料**:9 篇中文技术长文(DeepSeek Harness 实测 ×4 / ARC-AGI-3 harness / DseWiki 数据实拉 / SkillSpector 扫描 / GLM 对比 ×2;已发布 6 篇、未发稿 3 篇),约 7 万字
 - **测试集**:90 题,分 A 档(主题级)/ B 档(细节级),ground truth 标到文章级
 - **固定量**:bge-small-zh-v1.5 嵌入 / Chroma 向量库 / top-k=5 / overlap=50 字符
 - **变量**:分块策略(固定窗口 / LangChain 递归切分 / Markdown 结构感知)× chunk 大小(256 / 512 / 1024 字符)
