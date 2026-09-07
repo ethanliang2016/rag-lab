@@ -1,0 +1,30 @@
+{"id":"dsh-startup-01","article_id":"dsh-startup","tier":"A","question":"DeepSeek 官方那个 dsh 命令行工具是干嘛的"}
+{"id":"dsh-startup-02","article_id":"dsh-startup","tier":"A","question":"DSH 安装时 npm 卡死装不完怎么办"}
+{"id":"dsh-startup-03","article_id":"dsh-startup","tier":"A","question":"deepseek-harness 二十万星是刷的吗"}
+{"id":"dsh-startup-04","article_id":"dsh-startup","tier":"B","question":"dsh 启动后 web 界面默认开在哪个端口"}
+{"id":"dsh-startup-05","article_id":"dsh-startup","tier":"B","question":"pnpm 11 装 dsh 原生模块没编译导致启动失败怎么解"}
+{"id":"dsh-startup-06","article_id":"dsh-startup","tier":"B","question":"dsh 的 npm 包本体解压后有多大"}
+{"id":"dsh-startup-07","article_id":"dsh-startup","tier":"B","question":"dsh 完整装下来一共要装多少个依赖包"}
+{"id":"dsh-startup-08","article_id":"dsh-startup","tier":"B","question":"dsh 在 npm 上发了多少个版本 latest 到哪了"}
+{"id":"dsh-startup-09","article_id":"dsh-startup","tier":"B","question":"dsh 的依赖树里藏了哪几家模型的 SDK"}
+{"id":"dsh-startup-10","article_id":"dsh-startup","tier":"B","question":"dsh 官方自带哪几个预设模式"}
+{"id":"dsh-plugin-01","article_id":"dsh-plugin","tier":"A","question":"给 DSH 写插件有哪几条路可以走"}
+{"id":"dsh-plugin-02","article_id":"dsh-plugin","tier":"A","question":"DSH headless 模式能开发 Cordis 插件吗"}
+{"id":"dsh-plugin-03","article_id":"dsh-plugin","tier":"A","question":"想让 DSH agent 长期保持写作人设怎么弄"}
+{"id":"dsh-plugin-04","article_id":"dsh-plugin","tier":"B","question":"DSH 动态插件重启之后还在吗"}
+{"id":"dsh-plugin-05","article_id":"dsh-plugin","tier":"B","question":"agent-presets 补丁里 default 要填什么"}
+{"id":"dsh-plugin-06","article_id":"dsh-plugin","tier":"B","question":"Git Bash 里给 dsh 传长中文任务丢字怎么办"}
+{"id":"dsh-plugin-07","article_id":"dsh-plugin","tier":"B","question":"写 DSH 动态插件全程花了多少钱多少 token"}
+{"id":"dsh-plugin-08","article_id":"dsh-plugin","tier":"B","question":"harness.defineTool 的参数格式有什么坑"}
+{"id":"dsh-plugin-09","article_id":"dsh-plugin","tier":"B","question":"自定义 preset 挂载成不成功怎么验证"}
+{"id":"dsh-plugin-10","article_id":"dsh-plugin","tier":"B","question":"agent 自己拟的 AI 腔词表和超长句阈值是多少"}
+{"id":"dsh-market-01","article_id":"dsh-market","tier":"A","question":"dsh-market 上的插件有人审核吗"}
+{"id":"dsh-market-02","article_id":"dsh-market","tier":"A","question":"装 dsh-market 插件市场容易踩哪些坑"}
+{"id":"dsh-market-03","article_id":"dsh-market","tier":"A","question":"从 DSH 插件市场装插件前要注意什么"}
+{"id":"dsh-market-04","article_id":"dsh-market","tier":"B","question":"装 dshmarket 报 pnpm 不是内部或外部命令"}
+{"id":"dsh-market-05","article_id":"dsh-market","tier":"B","question":"dshmarket 装上后市场端点全 404 是缺什么"}
+{"id":"dsh-market-06","article_id":"dsh-market","tier":"B","question":"dsh 的 patch 文件里空数组后面能追加条目吗"}
+{"id":"dsh-market-07","article_id":"dsh-market","tier":"B","question":"dsh-market 现在总共有多少个插件几个类目"}
+{"id":"dsh-market-08","article_id":"dsh-market","tier":"B","question":"dsh-market 零下载的插件占比多少"}
+{"id":"dsh-market-09","article_id":"dsh-market","tier":"B","question":"dsh-keep-awake 这个防休眠插件安全吗"}
+{"id":"dsh-market-10","article_id":"dsh-market","tier":"B","question":"modlens 插件会把截图传到哪里去"}

@@ -1,0 +1,90 @@
+{"id": "dsh-startup-01", "article_id": "dsh-startup", "tier": "A", "question": "DeepSeek 官方那个 dsh 命令行工具是干嘛的"}
+{"id": "dsh-startup-02", "article_id": "dsh-startup", "tier": "A", "question": "DSH 安装时 npm 卡死装不完怎么办"}
+{"id": "dsh-startup-03", "article_id": "dsh-startup", "tier": "A", "question": "deepseek-harness 二十万星是刷的吗"}
+{"id": "dsh-startup-04", "article_id": "dsh-startup", "tier": "B", "question": "dsh 启动后 web 界面默认开在哪个端口"}
+{"id": "dsh-startup-05", "article_id": "dsh-startup", "tier": "B", "question": "pnpm 11 装 dsh 原生模块没编译导致启动失败怎么解"}
+{"id": "dsh-startup-06", "article_id": "dsh-startup", "tier": "B", "question": "dsh 的 npm 包本体解压后有多大"}
+{"id": "dsh-startup-07", "article_id": "dsh-startup", "tier": "B", "question": "dsh 完整装下来一共要装多少个依赖包"}
+{"id": "dsh-startup-08", "article_id": "dsh-startup", "tier": "B", "question": "dsh 在 npm 上发了多少个版本 latest 到哪了"}
+{"id": "dsh-startup-09", "article_id": "dsh-startup", "tier": "B", "question": "dsh 的依赖树里藏了哪几家模型的 SDK"}
+{"id": "dsh-startup-10", "article_id": "dsh-startup", "tier": "B", "question": "dsh 官方自带哪几个预设模式"}
+{"id": "dsh-plugin-01", "article_id": "dsh-plugin", "tier": "A", "question": "给 DSH 写插件有哪几条路可以走"}
+{"id": "dsh-plugin-02", "article_id": "dsh-plugin", "tier": "A", "question": "DSH headless 模式能开发 Cordis 插件吗"}
+{"id": "dsh-plugin-03", "article_id": "dsh-plugin", "tier": "A", "question": "想让 DSH agent 长期保持写作人设怎么弄"}
+{"id": "dsh-plugin-04", "article_id": "dsh-plugin", "tier": "B", "question": "DSH 动态插件重启之后还在吗"}
+{"id": "dsh-plugin-05", "article_id": "dsh-plugin", "tier": "B", "question": "agent-presets 补丁里 default 要填什么"}
+{"id": "dsh-plugin-06", "article_id": "dsh-plugin", "tier": "B", "question": "Git Bash 里给 dsh 传长中文任务丢字怎么办"}
+{"id": "dsh-plugin-07", "article_id": "dsh-plugin", "tier": "B", "question": "写 DSH 动态插件全程花了多少钱多少 token"}
+{"id": "dsh-plugin-08", "article_id": "dsh-plugin", "tier": "B", "question": "harness.defineTool 的参数格式有什么坑"}
+{"id": "dsh-plugin-09", "article_id": "dsh-plugin", "tier": "B", "question": "自定义 preset 挂载成不成功怎么验证"}
+{"id": "dsh-plugin-10", "article_id": "dsh-plugin", "tier": "B", "question": "agent 自己拟的 AI 腔词表和超长句阈值是多少"}
+{"id": "dsh-market-01", "article_id": "dsh-market", "tier": "A", "question": "dsh-market 上的插件有人审核吗"}
+{"id": "dsh-market-02", "article_id": "dsh-market", "tier": "A", "question": "装 dsh-market 插件市场容易踩哪些坑"}
+{"id": "dsh-market-03", "article_id": "dsh-market", "tier": "A", "question": "从 DSH 插件市场装插件前要注意什么"}
+{"id": "dsh-market-04", "article_id": "dsh-market", "tier": "B", "question": "装 dshmarket 报 pnpm 不是内部或外部命令"}
+{"id": "dsh-market-05", "article_id": "dsh-market", "tier": "B", "question": "dshmarket 装上后市场端点全 404 是缺什么"}
+{"id": "dsh-market-06", "article_id": "dsh-market", "tier": "B", "question": "dsh 的 patch 文件里空数组后面能追加条目吗"}
+{"id": "dsh-market-07", "article_id": "dsh-market", "tier": "B", "question": "dsh-market 现在总共有多少个插件几个类目"}
+{"id": "dsh-market-08", "article_id": "dsh-market", "tier": "B", "question": "dsh-market 零下载的插件占比多少"}
+{"id": "dsh-market-09", "article_id": "dsh-market", "tier": "B", "question": "dsh-keep-awake 这个防休眠插件安全吗"}
+{"id": "dsh-market-10", "article_id": "dsh-market", "tier": "B", "question": "modlens 插件会把截图传到哪里去"}
+{"id": "dsh-197pkg-01", "article_id": "dsh-197pkg", "tier": "A", "question": "DSH 的运行时底座用的什么插件化框架？"}
+{"id": "dsh-197pkg-02", "article_id": "dsh-197pkg", "tier": "A", "question": "DSH 的 197 个包按功能分成了哪几大类？"}
+{"id": "dsh-197pkg-03", "article_id": "dsh-197pkg", "tier": "A", "question": "DSH 每个能力为什么要配本地和沙箱两套实现？"}
+{"id": "dsh-197pkg-04", "article_id": "dsh-197pkg", "tier": "B", "question": "为什么 grep pnpm 虚拟存储会漏 DSH 包名？"}
+{"id": "dsh-197pkg-05", "article_id": "dsh-197pkg", "tier": "B", "question": "DSH 会话查询用 SQLite 什么特性做全文搜索？"}
+{"id": "dsh-197pkg-06", "article_id": "dsh-197pkg", "tier": "B", "question": "DSH 在 Linux 上用 Landlock 干什么？"}
+{"id": "dsh-197pkg-07", "article_id": "dsh-197pkg", "tier": "B", "question": "DSH 的包清单核验时抽查了多少个高风险包名？"}
+{"id": "dsh-197pkg-08", "article_id": "dsh-197pkg", "tier": "B", "question": "DSH 的 Web 前端有多少个界面插件包？"}
+{"id": "dsh-197pkg-09", "article_id": "dsh-197pkg", "tier": "B", "question": "@deepseek-ai 顶层目录下只有哪个链接？"}
+{"id": "dsh-197pkg-10", "article_id": "dsh-197pkg", "tier": "B", "question": "让 DSH 总结 @deepseek-ai 的包花了多少钱？"}
+{"id": "arc-harness-01", "article_id": "arc-harness", "tier": "A", "question": "ARC-AGI-3 换 harness 成绩涨了多少？"}
+{"id": "arc-harness-02", "article_id": "arc-harness", "tier": "A", "question": "ARC-AGI-3 两种 harness 的机制差在哪？"}
+{"id": "arc-harness-03", "article_id": "arc-harness", "tier": "A", "question": "ARC-AGI-3 是个什么评测，一共几个小游戏？"}
+{"id": "arc-harness-04", "article_id": "arc-harness", "tier": "B", "question": "服务端会话状态只有哪个 runtime 组合能跑？"}
+{"id": "arc-harness-05", "article_id": "arc-harness", "tier": "B", "question": "ARC-AGI-3 不注册的话怎么拿匿名 API key？"}
+{"id": "arc-harness-06", "article_id": "arc-harness", "tier": "B", "question": "跑 ARC-AGI-3 遇到 GBK 写盘崩溃怎么解决？"}
+{"id": "arc-harness-07", "article_id": "arc-harness", "tier": "B", "question": "175k 上下文那次 run 触发了多少次 trim？"}
+{"id": "arc-harness-08", "article_id": "arc-harness", "tier": "B", "question": "30k 上下文 run 模型第几步就说在原地转圈？"}
+{"id": "arc-harness-09", "article_id": "arc-harness", "tier": "B", "question": "claude-sonnet-4-6 在方舟会映射成啥模型？"}
+{"id": "arc-harness-10", "article_id": "arc-harness", "tier": "B", "question": "30k 上下文那次 run 最后死在什么错误上？"}
+{"id": "dsewiki-01", "article_id": "dsewiki", "tier": "A", "question": "德国废弃 wiki 被 agent 刷了多少条留言？"}
+{"id": "dsewiki-02", "article_id": "dsewiki", "tier": "A", "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？"}
+{"id": "dsewiki-03", "article_id": "dsewiki", "tier": "A", "question": "DSE Wiki 的留言有没有一条想过去通知人类？"}
+{"id": "dsewiki-04", "article_id": "dsewiki", "tier": "B", "question": "DSE Wiki 数据集里非空账号标识有多少个？"}
+{"id": "dsewiki-05", "article_id": "dsewiki", "tier": "B", "question": "DSE Wiki 全量统计按保存口径是多少次编辑？"}
+{"id": "dsewiki-06", "article_id": "dsewiki", "tier": "B", "question": "6 月 18 日峰值那天单日编辑了多少次？"}
+{"id": "dsewiki-07", "article_id": "dsewiki", "tier": "B", "question": "DSE Wiki 只发过一条消息的账号占比是多少？"}
+{"id": "dsewiki-08", "article_id": "dsewiki", "tier": "B", "question": "DSE Wiki 数据集里被标记为人类的账号是谁？"}
+{"id": "dsewiki-09", "article_id": "dsewiki", "tier": "B", "question": "删帖拉锯最凶的那个页面删了几次重建几次？"}
+{"id": "dsewiki-10", "article_id": "dsewiki", "tier": "B", "question": "6 月 16 到 18 三天编辑占全部保存的比例？"}
+{"id": "skillspector-01", "article_id": "skillspector", "tier": "A", "question": "用SkillSpector扫热门skills能查出恶意注入吗"}
+{"id": "skillspector-02", "article_id": "skillspector", "tier": "A", "question": "SkillSpector静态扫描误报严重吗"}
+{"id": "skillspector-03", "article_id": "skillspector", "tier": "A", "question": "agent skills供应链安全有审计工具吗"}
+{"id": "skillspector-04", "article_id": "skillspector", "tier": "B", "question": "SkillSpector引用的恶意skill比例是多少"}
+{"id": "skillspector-05", "article_id": "skillspector", "tier": "B", "question": "SkillSpector为什么不能从PyPI直接装"}
+{"id": "skillspector-06", "article_id": "skillspector", "tier": "B", "question": "skillspector扫描命令怎么写"}
+{"id": "skillspector-07", "article_id": "skillspector", "tier": "B", "question": "SkillSpector建议别装的skill有几个"}
+{"id": "skillspector-08", "article_id": "skillspector", "tier": "B", "question": "不配LLM key时SkillSpector跳过几个分析器"}
+{"id": "skillspector-09", "article_id": "skillspector", "tier": "B", "question": "SkillSpector同一段XML最多重复命中多少次"}
+{"id": "skillspector-10", "article_id": "skillspector", "tier": "B", "question": "SkillSpector为啥把翻译版skill全打满分"}
+{"id": "glm53-01", "article_id": "glm53", "tier": "A", "question": "GLM-5.3比GLM-5.2提升在哪些场景"}
+{"id": "glm53-02", "article_id": "glm53", "tier": "A", "question": "GLM-5.2和GLM-5.3同题实测谁更强"}
+{"id": "glm53-03", "article_id": "glm53", "tier": "A", "question": "GLM-5.3和GLM-5.2是同一基座吗"}
+{"id": "glm53-04", "article_id": "glm53", "tier": "B", "question": "GLM-5.3递归探针纠错后f25等于多少"}
+{"id": "glm53-05", "article_id": "glm53", "tier": "B", "question": "GLM-5.3手算递推从第几项开始出错"}
+{"id": "glm53-06", "article_id": "glm53", "tier": "B", "question": "GLM-5.2跑推理探针题花了多少秒"}
+{"id": "glm53-07", "article_id": "glm53", "tier": "B", "question": "弱令牌漏洞GLM-5.2定的CVSS是多少分"}
+{"id": "glm53-08", "article_id": "glm53", "tier": "B", "question": "GLM-5.2读出哪个依赖被精确锁定版本"}
+{"id": "glm53-09", "article_id": "glm53", "tier": "B", "question": "魔搭Hy3免费档下线的报错原话是什么"}
+{"id": "glm53-10", "article_id": "glm53", "tier": "B", "question": "GLM-5.2第5题没答完是被什么截断"}
+{"id": "hy4-glm-01", "article_id": "hy4-glm", "tier": "A", "question": "Hy4和GLM-5.3是同一副架构骨架吗"}
+{"id": "hy4-glm-02", "article_id": "hy4-glm", "tier": "A", "question": "Hy4和GLM-5.3官方基准谁更强"}
+{"id": "hy4-glm-03", "article_id": "hy4-glm", "tier": "A", "question": "Hy4和GLM-5.3的许可证有什么区别"}
+{"id": "hy4-glm-04", "article_id": "hy4-glm", "tier": "B", "question": "Hy4在OpenRouter的输入输出单价是多少"}
+{"id": "hy4-glm-05", "article_id": "hy4-glm", "tier": "B", "question": "腾讯盲测Hy4和GLM-5.3各得多少分"}
+{"id": "hy4-glm-06", "article_id": "hy4-glm", "tier": "B", "question": "AutomationBench最大单项分差是多少"}
+{"id": "hy4-glm-07", "article_id": "hy4-glm", "tier": "B", "question": "GLM-5.3许可证里MaaS条款的收入门槛多少"}
+{"id": "hy4-glm-08", "article_id": "hy4-glm", "tier": "B", "question": "Terminal-Bench 2.1 Hy4跑多少分"}
+{"id": "hy4-glm-09", "article_id": "hy4-glm", "tier": "B", "question": "Hy4和GLM-5.3各有多少层多少个专家"}
+{"id": "hy4-glm-10", "article_id": "hy4-glm", "tier": "B", "question": "腾讯Hy4盲测请了多少位内部专家"}

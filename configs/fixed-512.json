@@ -1,0 +1,6 @@
+{
+ "id": "fixed-512",
+ "strategy": "fixed",
+ "size": 512,
+ "overlap": 50
+}

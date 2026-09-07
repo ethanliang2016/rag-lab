@@ -1,0 +1,9 @@
+{"id": "dsh-startup", "domain": "ai", "title": "DeepSeek Harness 上手实录：Everything is a Plugin 是新范式还是新命名？", "chars": 6404, "source": "AI情报收集/深度实测/DSH系列/DSH-上手实录-CSDN稿-v2.md"}
+{"id": "dsh-plugin", "domain": "ai", "title": "DSH 插件开发实录：我让 agent 现场给我写了个\"AI味检测器\"", "chars": 12308, "source": "AI情报收集/深度实测/DSH系列/插件开发实录/DSH插件开发实录-CSDN稿.md"}
+{"id": "dsh-market", "domain": "ai", "title": "2300 个插件没人把关：我装上 DSH 插件市场逛了一整天", "chars": 7776, "source": "AI情报收集/深度实测/DSH系列/DSH插件市场实测-CSDN稿.md"}
+{"id": "dsh-197pkg", "domain": "ai", "title": "@deepseek-ai 包汇总与架构解读", "chars": 10582, "source": "AI情报收集/深度实测/DSH系列/DSH-197包架构清单-核验版.md"}
+{"id": "arc-harness", "domain": "ai", "title": "换个 harness,从 62.7% 到 99.9%:我拆开 ARC-AGI-3 的脚手架,还录下了它的\"失忆\"现场", "chars": 6663, "source": "AI情报收集/深度实测/ARC-AGI3-harness实验/ARC-AGI3-harness实测-CSDN稿.md"}
+{"id": "dsewiki", "domain": "ai", "title": "AI 深夜接头,全被录下来了:一个废弃 wiki 上的 18,000 条留言,没有一条想到通知人类", "chars": 7710, "source": "AI情报收集/深度实测/DseWiki逃逸agents/DseWiki逃逸agents数据实拉-CSDN稿-v5.md"}
+{"id": "skillspector", "domain": "ai", "title": "我用 NVIDIA SkillSpector 纯静态扫了一遍 GitHub 最火的 agent skills：能挖出多少注入？0 个", "chars": 7142, "source": "AI情报收集/深度实测/SkillSpector-skills注入实测/SkillSpector-skills注入实测-CSDN稿.md"}
+{"id": "glm53", "domain": "ai", "title": "GLM-5.3 vs GLM-5.2 · 同题实测报告 v2(同基座两代对照)", "chars": 5042, "source": "AI情报收集/深度实测/GLM-5.3实测/GLM5.3-vs-GLM5.2-同题实测报告v2.md"}
+{"id": "hy4-glm", "domain": "ai", "title": "Hy4 vs GLM-5.3 · 同题实测报告 v1(官方数据对比版)", "chars": 7250, "source": "AI情报收集/深度实测/Hy4-vs-GLM5.3实测/Hy4-vs-GLM5.3-实测报告.md"}

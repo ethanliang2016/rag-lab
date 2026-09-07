@@ -1,0 +1,1281 @@
+[
+ {
+  "config": {
+   "id": "fixed-1024",
+   "strategy": "fixed",
+   "size": 1024,
+   "overlap": 50
+  },
+  "chunks": 76,
+  "codeblock_cuts": 7,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8444,
+    "hit5": 0.9778,
+    "mrr5": 0.9022
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.8519,
+    "hit5": 1.0,
+    "mrr5": 0.9259
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.8413,
+    "hit5": 0.9683,
+    "mrr5": 0.8921
+   }
+  },
+  "seconds": 9.0,
+  "misses": [
+   {
+    "q": "dsh-startup-01",
+    "question": "DeepSeek 官方那个 dsh 命令行工具是干嘛的",
+    "tier": "A",
+    "target": "dsh-startup",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "dsh-startup-02",
+    "question": "DSH 安装时 npm 卡死装不完怎么办",
+    "tier": "A",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-04",
+    "question": "DSH 动态插件重启之后还在吗",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-07",
+    "question": "写 DSH 动态插件全程花了多少钱多少 token",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "dsh-market-10",
+    "question": "modlens 插件会把截图传到哪里去",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "arc-harness-04",
+    "question": "服务端会话状态只有哪个 runtime 组合能跑？",
+    "tier": "B",
+    "target": "arc-harness",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "arc-harness-05",
+    "question": "ARC-AGI-3 不注册的话怎么拿匿名 API key？",
+    "tier": "B",
+    "target": "arc-harness",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "arc-harness-09",
+    "question": "claude-sonnet-4-6 在方舟会映射成啥模型？",
+    "tier": "B",
+    "target": "arc-harness",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "dsewiki-10",
+    "question": "6 月 16 到 18 三天编辑占全部保存的比例？",
+    "tier": "B",
+    "target": "dsewiki",
+    "top1": "dsh-market"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "fixed-256",
+   "strategy": "fixed",
+   "size": 256,
+   "overlap": 50
+  },
+  "chunks": 347,
+  "codeblock_cuts": 23,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8333,
+    "hit5": 0.9667,
+    "mrr5": 0.8852
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 1.0,
+    "mrr5": 0.8488
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.873,
+    "hit5": 0.9524,
+    "mrr5": 0.9008
+   }
+  },
+  "seconds": 13.6,
+  "misses": [
+   {
+    "q": "dsh-startup-02",
+    "question": "DSH 安装时 npm 卡死装不完怎么办",
+    "tier": "A",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-04",
+    "question": "DSH 动态插件重启之后还在吗",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-06",
+    "question": "DSH 在 Linux 上用 Landlock 干什么？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-08",
+    "question": "Terminal-Bench 2.1 Hy4跑多少分",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "arc-harness"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "fixed-512",
+   "strategy": "fixed",
+   "size": 512,
+   "overlap": 50
+  },
+  "chunks": 156,
+  "codeblock_cuts": 10,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8333,
+    "hit5": 0.9667,
+    "mrr5": 0.8852
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 1.0,
+    "mrr5": 0.8488
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.873,
+    "hit5": 0.9524,
+    "mrr5": 0.9008
+   }
+  },
+  "seconds": 13.4,
+  "misses": [
+   {
+    "q": "dsh-startup-02",
+    "question": "DSH 安装时 npm 卡死装不完怎么办",
+    "tier": "A",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-04",
+    "question": "DSH 动态插件重启之后还在吗",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-06",
+    "question": "DSH 在 Linux 上用 Landlock 干什么？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-08",
+    "question": "Terminal-Bench 2.1 Hy4跑多少分",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "arc-harness"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "recursive-1024",
+   "strategy": "recursive",
+   "size": 1024,
+   "overlap": 50
+  },
+  "chunks": 86,
+  "codeblock_cuts": 2,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8222,
+    "hit5": 0.9778,
+    "mrr5": 0.8772
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 1.0,
+    "mrr5": 0.8364
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.8571,
+    "hit5": 0.9683,
+    "mrr5": 0.8947
+   }
+  },
+  "seconds": 9.3,
+  "misses": [
+   {
+    "q": "dsh-startup-02",
+    "question": "DSH 安装时 npm 卡死装不完怎么办",
+    "tier": "A",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-08",
+    "question": "dsh 在 npm 上发了多少个版本 latest 到哪了",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-04",
+    "question": "DSH 动态插件重启之后还在吗",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-06",
+    "question": "DSH 在 Linux 上用 Landlock 干什么？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-08",
+    "question": "Terminal-Bench 2.1 Hy4跑多少分",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "arc-harness"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "recursive-256",
+   "strategy": "recursive",
+   "size": 256,
+   "overlap": 50
+  },
+  "chunks": 449,
+  "codeblock_cuts": 12,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8333,
+    "hit5": 0.9667,
+    "mrr5": 0.8837
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 0.9259,
+    "mrr5": 0.8099
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.873,
+    "hit5": 0.9841,
+    "mrr5": 0.9153
+   }
+  },
+  "seconds": 12.0,
+  "misses": [
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-08",
+    "question": "dsh 在 npm 上发了多少个版本 latest 到哪了",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-03",
+    "question": "DSH 每个能力为什么要配本地和沙箱两套实现？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-07",
+    "question": "DSH 的包清单核验时抽查了多少个高风险包名？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-08",
+    "question": "DSH 的 Web 前端有多少个界面插件包？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "recursive-512",
+   "strategy": "recursive",
+   "size": 512,
+   "overlap": 50
+  },
+  "chunks": 194,
+  "codeblock_cuts": 4,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8333,
+    "hit5": 0.9667,
+    "mrr5": 0.8837
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 0.9259,
+    "mrr5": 0.8099
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.873,
+    "hit5": 0.9841,
+    "mrr5": 0.9153
+   }
+  },
+  "seconds": 12.7,
+  "misses": [
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-08",
+    "question": "dsh 在 npm 上发了多少个版本 latest 到哪了",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-03",
+    "question": "DSH 每个能力为什么要配本地和沙箱两套实现？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-07",
+    "question": "DSH 的包清单核验时抽查了多少个高风险包名？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-08",
+    "question": "DSH 的 Web 前端有多少个界面插件包？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "structure-1024",
+   "strategy": "structure",
+   "size": 1024,
+   "overlap": 50
+  },
+  "chunks": 92,
+  "codeblock_cuts": 2,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8333,
+    "hit5": 0.9556,
+    "mrr5": 0.8806
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 0.8889,
+    "mrr5": 0.8025
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.873,
+    "hit5": 0.9841,
+    "mrr5": 0.914
+   }
+  },
+  "seconds": 9.9,
+  "misses": [
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-08",
+    "question": "dsh 在 npm 上发了多少个版本 latest 到哪了",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-03",
+    "question": "DSH 每个能力为什么要配本地和沙箱两套实现？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-07",
+    "question": "DSH 的包清单核验时抽查了多少个高风险包名？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-08",
+    "question": "DSH 的 Web 前端有多少个界面插件包？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "structure-256",
+   "strategy": "structure",
+   "size": 256,
+   "overlap": 50
+  },
+  "chunks": 325,
+  "codeblock_cuts": 10,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8111,
+    "hit5": 0.9667,
+    "mrr5": 0.8665
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 0.9259,
+    "mrr5": 0.8025
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.8413,
+    "hit5": 0.9841,
+    "mrr5": 0.8939
+   }
+  },
+  "seconds": 13.0,
+  "misses": [
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-08",
+    "question": "dsh 在 npm 上发了多少个版本 latest 到哪了",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-03",
+    "question": "DSH 每个能力为什么要配本地和沙箱两套实现？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-06",
+    "question": "DSH 在 Linux 上用 Landlock 干什么？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-07",
+    "question": "DSH 的包清单核验时抽查了多少个高风险包名？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-08",
+    "question": "DSH 的 Web 前端有多少个界面插件包？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "dsewiki-10",
+    "question": "6 月 16 到 18 三天编辑占全部保存的比例？",
+    "tier": "B",
+    "target": "dsewiki",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ },
+ {
+  "config": {
+   "id": "structure-512",
+   "strategy": "structure",
+   "size": 512,
+   "overlap": 50
+  },
+  "chunks": 177,
+  "codeblock_cuts": 8,
+  "cross_domain": 0,
+  "metrics": {
+   "overall": {
+    "n": 90,
+    "hit1": 0.8111,
+    "hit5": 0.9667,
+    "mrr5": 0.8665
+   },
+   "A": {
+    "n": 27,
+    "hit1": 0.7407,
+    "hit5": 0.9259,
+    "mrr5": 0.8025
+   },
+   "B": {
+    "n": 63,
+    "hit1": 0.8413,
+    "hit5": 0.9841,
+    "mrr5": 0.8939
+   }
+  },
+  "seconds": 12.9,
+  "misses": [
+   {
+    "q": "dsh-startup-04",
+    "question": "dsh 启动后 web 界面默认开在哪个端口",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-197pkg"
+   },
+   {
+    "q": "dsh-startup-08",
+    "question": "dsh 在 npm 上发了多少个版本 latest 到哪了",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-startup-10",
+    "question": "dsh 官方自带哪几个预设模式",
+    "tier": "B",
+    "target": "dsh-startup",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-plugin-05",
+    "question": "agent-presets 补丁里 default 要填什么",
+    "tier": "B",
+    "target": "dsh-plugin",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-market-06",
+    "question": "dsh 的 patch 文件里空数组后面能追加条目吗",
+    "tier": "B",
+    "target": "dsh-market",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-02",
+    "question": "DSH 的 197 个包按功能分成了哪几大类？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsh-197pkg-03",
+    "question": "DSH 每个能力为什么要配本地和沙箱两套实现？",
+    "tier": "A",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-06",
+    "question": "DSH 在 Linux 上用 Landlock 干什么？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-07",
+    "question": "DSH 的包清单核验时抽查了多少个高风险包名？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "dsh-197pkg-08",
+    "question": "DSH 的 Web 前端有多少个界面插件包？",
+    "tier": "B",
+    "target": "dsh-197pkg",
+    "top1": "dsh-startup"
+   },
+   {
+    "q": "dsewiki-02",
+    "question": "只读沙箱里的 agent 怎么把 wiki 页面改掉的？",
+    "tier": "A",
+    "target": "dsewiki",
+    "top1": "dsh-plugin"
+   },
+   {
+    "q": "dsewiki-10",
+    "question": "6 月 16 到 18 三天编辑占全部保存的比例？",
+    "tier": "B",
+    "target": "dsewiki",
+    "top1": "dsh-market"
+   },
+   {
+    "q": "skillspector-03",
+    "question": "agent skills供应链安全有审计工具吗",
+    "tier": "A",
+    "target": "skillspector",
+    "top1": "dsewiki"
+   },
+   {
+    "q": "hy4-glm-01",
+    "question": "Hy4和GLM-5.3是同一副架构骨架吗",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-02",
+    "question": "Hy4和GLM-5.3官方基准谁更强",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-03",
+    "question": "Hy4和GLM-5.3的许可证有什么区别",
+    "tier": "A",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   },
+   {
+    "q": "hy4-glm-09",
+    "question": "Hy4和GLM-5.3各有多少层多少个专家",
+    "tier": "B",
+    "target": "hy4-glm",
+    "top1": "glm53"
+   }
+  ]
+ }
+]

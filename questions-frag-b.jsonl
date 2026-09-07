@@ -1,0 +1,30 @@
+{"id":"dsh-197pkg-01","article_id":"dsh-197pkg","tier":"A","question":"DSH 的运行时底座用的什么插件化框架？"}
+{"id":"dsh-197pkg-02","article_id":"dsh-197pkg","tier":"A","question":"DSH 的 197 个包按功能分成了哪几大类？"}
+{"id":"dsh-197pkg-03","article_id":"dsh-197pkg","tier":"A","question":"DSH 每个能力为什么要配本地和沙箱两套实现？"}
+{"id":"dsh-197pkg-04","article_id":"dsh-197pkg","tier":"B","question":"为什么 grep pnpm 虚拟存储会漏 DSH 包名？"}
+{"id":"dsh-197pkg-05","article_id":"dsh-197pkg","tier":"B","question":"DSH 会话查询用 SQLite 什么特性做全文搜索？"}
+{"id":"dsh-197pkg-06","article_id":"dsh-197pkg","tier":"B","question":"DSH 在 Linux 上用 Landlock 干什么？"}
+{"id":"dsh-197pkg-07","article_id":"dsh-197pkg","tier":"B","question":"DSH 的包清单核验时抽查了多少个高风险包名？"}
+{"id":"dsh-197pkg-08","article_id":"dsh-197pkg","tier":"B","question":"DSH 的 Web 前端有多少个界面插件包？"}
+{"id":"dsh-197pkg-09","article_id":"dsh-197pkg","tier":"B","question":"@deepseek-ai 顶层目录下只有哪个链接？"}
+{"id":"dsh-197pkg-10","article_id":"dsh-197pkg","tier":"B","question":"让 DSH 总结 @deepseek-ai 的包花了多少钱？"}
+{"id":"arc-harness-01","article_id":"arc-harness","tier":"A","question":"ARC-AGI-3 换 harness 成绩涨了多少？"}
+{"id":"arc-harness-02","article_id":"arc-harness","tier":"A","question":"ARC-AGI-3 两种 harness 的机制差在哪？"}
+{"id":"arc-harness-03","article_id":"arc-harness","tier":"A","question":"ARC-AGI-3 是个什么评测，一共几个小游戏？"}
+{"id":"arc-harness-04","article_id":"arc-harness","tier":"B","question":"服务端会话状态只有哪个 runtime 组合能跑？"}
+{"id":"arc-harness-05","article_id":"arc-harness","tier":"B","question":"ARC-AGI-3 不注册的话怎么拿匿名 API key？"}
+{"id":"arc-harness-06","article_id":"arc-harness","tier":"B","question":"跑 ARC-AGI-3 遇到 GBK 写盘崩溃怎么解决？"}
+{"id":"arc-harness-07","article_id":"arc-harness","tier":"B","question":"175k 上下文那次 run 触发了多少次 trim？"}
+{"id":"arc-harness-08","article_id":"arc-harness","tier":"B","question":"30k 上下文 run 模型第几步就说在原地转圈？"}
+{"id":"arc-harness-09","article_id":"arc-harness","tier":"B","question":"claude-sonnet-4-6 在方舟会映射成啥模型？"}
+{"id":"arc-harness-10","article_id":"arc-harness","tier":"B","question":"30k 上下文那次 run 最后死在什么错误上？"}
+{"id":"dsewiki-01","article_id":"dsewiki","tier":"A","question":"德国废弃 wiki 被 agent 刷了多少条留言？"}
+{"id":"dsewiki-02","article_id":"dsewiki","tier":"A","question":"只读沙箱里的 agent 怎么把 wiki 页面改掉的？"}
+{"id":"dsewiki-03","article_id":"dsewiki","tier":"A","question":"DSE Wiki 的留言有没有一条想过去通知人类？"}
+{"id":"dsewiki-04","article_id":"dsewiki","tier":"B","question":"DSE Wiki 数据集里非空账号标识有多少个？"}
+{"id":"dsewiki-05","article_id":"dsewiki","tier":"B","question":"DSE Wiki 全量统计按保存口径是多少次编辑？"}
+{"id":"dsewiki-06","article_id":"dsewiki","tier":"B","question":"6 月 18 日峰值那天单日编辑了多少次？"}
+{"id":"dsewiki-07","article_id":"dsewiki","tier":"B","question":"DSE Wiki 只发过一条消息的账号占比是多少？"}
+{"id":"dsewiki-08","article_id":"dsewiki","tier":"B","question":"DSE Wiki 数据集里被标记为人类的账号是谁？"}
+{"id":"dsewiki-09","article_id":"dsewiki","tier":"B","question":"删帖拉锯最凶的那个页面删了几次重建几次？"}
+{"id":"dsewiki-10","article_id":"dsewiki","tier":"B","question":"6 月 16 到 18 三天编辑占全部保存的比例？"}

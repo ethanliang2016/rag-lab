@@ -1,0 +1,6 @@
+{
+ "id": "recursive-512",
+ "strategy": "recursive",
+ "size": 512,
+ "overlap": 50
+}

@@ -1,0 +1,30 @@
+{"id":"skillspector-01","article_id":"skillspector","tier":"A","question":"用SkillSpector扫热门skills能查出恶意注入吗"}
+{"id":"skillspector-02","article_id":"skillspector","tier":"A","question":"SkillSpector静态扫描误报严重吗"}
+{"id":"skillspector-03","article_id":"skillspector","tier":"A","question":"agent skills供应链安全有审计工具吗"}
+{"id":"skillspector-04","article_id":"skillspector","tier":"B","question":"SkillSpector引用的恶意skill比例是多少"}
+{"id":"skillspector-05","article_id":"skillspector","tier":"B","question":"SkillSpector为什么不能从PyPI直接装"}
+{"id":"skillspector-06","article_id":"skillspector","tier":"B","question":"skillspector扫描命令怎么写"}
+{"id":"skillspector-07","article_id":"skillspector","tier":"B","question":"SkillSpector建议别装的skill有几个"}
+{"id":"skillspector-08","article_id":"skillspector","tier":"B","question":"不配LLM key时SkillSpector跳过几个分析器"}
+{"id":"skillspector-09","article_id":"skillspector","tier":"B","question":"SkillSpector同一段XML最多重复命中多少次"}
+{"id":"skillspector-10","article_id":"skillspector","tier":"B","question":"SkillSpector为啥把翻译版skill全打满分"}
+{"id":"glm53-01","article_id":"glm53","tier":"A","question":"GLM-5.3比GLM-5.2提升在哪些场景"}
+{"id":"glm53-02","article_id":"glm53","tier":"A","question":"GLM-5.2和GLM-5.3同题实测谁更强"}
+{"id":"glm53-03","article_id":"glm53","tier":"A","question":"GLM-5.3和GLM-5.2是同一基座吗"}
+{"id":"glm53-04","article_id":"glm53","tier":"B","question":"GLM-5.3递归探针纠错后f25等于多少"}
+{"id":"glm53-05","article_id":"glm53","tier":"B","question":"GLM-5.3手算递推从第几项开始出错"}
+{"id":"glm53-06","article_id":"glm53","tier":"B","question":"GLM-5.2跑推理探针题花了多少秒"}
+{"id":"glm53-07","article_id":"glm53","tier":"B","question":"弱令牌漏洞GLM-5.2定的CVSS是多少分"}
+{"id":"glm53-08","article_id":"glm53","tier":"B","question":"GLM-5.2读出哪个依赖被精确锁定版本"}
+{"id":"glm53-09","article_id":"glm53","tier":"B","question":"魔搭Hy3免费档下线的报错原话是什么"}
+{"id":"glm53-10","article_id":"glm53","tier":"B","question":"GLM-5.2第5题没答完是被什么截断"}
+{"id":"hy4-glm-01","article_id":"hy4-glm","tier":"A","question":"Hy4和GLM-5.3是同一副架构骨架吗"}
+{"id":"hy4-glm-02","article_id":"hy4-glm","tier":"A","question":"Hy4和GLM-5.3官方基准谁更强"}
+{"id":"hy4-glm-03","article_id":"hy4-glm","tier":"A","question":"Hy4和GLM-5.3的许可证有什么区别"}
+{"id":"hy4-glm-04","article_id":"hy4-glm","tier":"B","question":"Hy4在OpenRouter的输入输出单价是多少"}
+{"id":"hy4-glm-05","article_id":"hy4-glm","tier":"B","question":"腾讯盲测Hy4和GLM-5.3各得多少分"}
+{"id":"hy4-glm-06","article_id":"hy4-glm","tier":"B","question":"AutomationBench最大单项分差是多少"}
+{"id":"hy4-glm-07","article_id":"hy4-glm","tier":"B","question":"GLM-5.3许可证里MaaS条款的收入门槛多少"}
+{"id":"hy4-glm-08","article_id":"hy4-glm","tier":"B","question":"Terminal-Bench 2.1 Hy4跑多少分"}
+{"id":"hy4-glm-09","article_id":"hy4-glm","tier":"B","question":"Hy4和GLM-5.3各有多少层多少个专家"}
+{"id":"hy4-glm-10","article_id":"hy4-glm","tier":"B","question":"腾讯Hy4盲测请了多少位内部专家"}
