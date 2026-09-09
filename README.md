@@ -6,7 +6,7 @@
 |---|---|---|---|
 | 1 | [RAG 分块策略实测](https://blog.csdn.net/weixin_39885962/article/details/164459646) | 10 篇中文技术文 × 100 题 × 9 组分块配置 | v1.1 已发布 |
 | 2 | [RAG 重排序实测](https://blog.csdn.net/weixin_39885962/article/details/164712425) | DuReader-retrieval 93,885 段落 × 500 真实查询 × 召回/重排对照 | v1 已发布(2026-09-09) |
-| 3 | RAG 生成层实测(未发布) | CMRC2018 dev 3,219 题 × 三档上下文 × Qwen2.5-7B 生成 | 跑批完成(2026-09-09,6,208 次生成),成文整理中 |
+| 3 | [RAG 生成层实测](https://blog.csdn.net/weixin_39885962/article/details/164747501) | CMRC2018 dev 3,219 题 × 三档上下文 × Qwen2.5-7B 生成 | v1 已发布(2026-09-09 16:20;6,208 次生成,AutoDL RTX 4090D 跑批) |
 
 ## 实验一:分块策略实测
 
@@ -137,6 +137,8 @@ results/rerank_results.json  实验二跑批结果
 results/rerank_checkpoint.jsonl 实验二逐条 checkpoint(断电/关机后 --resume 续跑用)
 results/cmrc_gen.jsonl       实验三逐条生成结果(含上下文构造元信息)
 results/cmrc_gen_metrics.json 实验三分层指标汇总
+results/autodl训练结果-20260909/  AutoDL 下载件归档(jsonl + metrics)
+results/writing/             写作辅助产物(逐题案例 cases.json / 宽松口径 lenient.json / figures)
 ```
 
 ## 指标口径
