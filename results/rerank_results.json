@@ -1,0 +1,1014 @@
+{
+ "meta": {
+  "embed_model": "BAAI/bge-small-zh-v1.5",
+  "rerank_model": "BAAI/bge-reranker-base",
+  "n_queries": 500,
+  "top_n": 50,
+  "rerank_ns": [
+   10,
+   20,
+   50
+  ],
+  "index_passages": 93885
+ },
+ "retrieval": {
+  "no_instruction": {
+   "n": 500,
+   "hit@1": 0.358,
+   "hit@5": 0.692,
+   "hit@10": 0.796,
+   "mrr@10": 0.5001
+  },
+  "with_instruction": {
+   "n": 500,
+   "hit@1": 0.364,
+   "hit@5": 0.696,
+   "hit@10": 0.78,
+   "mrr@10": 0.5042
+  },
+  "used": "instruction"
+ },
+ "rerank": {
+  "10": {
+   "n": 500,
+   "hit@1": 0.486,
+   "hit@5": 0.742,
+   "hit@10": 0.78,
+   "mrr@10": 0.5931
+  },
+  "20": {
+   "n": 500,
+   "hit@1": 0.506,
+   "hit@5": 0.782,
+   "hit@10": 0.84,
+   "mrr@10": 0.6229
+  },
+  "50": {
+   "n": 500,
+   "hit@1": 0.504,
+   "hit@5": 0.802,
+   "hit@10": 0.856,
+   "mrr@10": 0.6291
+  }
+ },
+ "attribution": {
+  "recall_missing_top50": 51,
+  "rescued_rerank20_hit10": 36,
+  "killed_rerank20_hit10": 6,
+  "persist_fail_hit10": 23
+ },
+ "latency": {
+  "query_embed_ms_per_q": 7.4,
+  "retrieve_ms_per_q": 2.7,
+  "rerank_s_per_50pairs": 14.843,
+  "rerank_pair_per_s": 3.4
+ },
+ "truncation": {
+  "embedder": {
+   "window": 512,
+   "total": 93885,
+   "over": 7173,
+   "pct": 7.64
+  },
+  "reranker_pairs": {
+   "window": 512,
+   "total": 25000,
+   "over": 1173,
+   "pct": 4.69
+  }
+ },
+ "logit_analysis": {
+  "pos_pair_mean": 0.967,
+  "neg_pair_mean": 0.567,
+  "all_score_min": 0.0,
+  "all_score_max": 1.0,
+  "all_score_p10_p50_p90": [
+   0.02,
+   0.73,
+   0.998
+  ],
+  "fixed_threshold_sweep": {
+   "0.5": {
+    "pos_below": 0.0169,
+    "neg_above": 0.567
+   },
+   "0.7": {
+    "pos_below": 0.0325,
+    "neg_above": 0.4827
+   },
+   "0.9": {
+    "pos_below": 0.0787,
+    "neg_above": 0.3542
+   }
+  },
+  "note": "CrossEncoder.predict 默认输出 sigmoid 分数;绝对值跨查询不可比,仅可组内排序——固定阈值过滤会误杀/漏放,见 threshold sweep"
+ },
+ "stratified_by_query_len": {
+  "short": {
+   "n": 214,
+   "baseline": {
+    "n": 214,
+    "hit@1": 0.3645,
+    "hit@5": 0.743,
+    "hit@10": 0.8131,
+    "mrr@10": 0.5114
+   },
+   "rerank@20": {
+    "n": 214,
+    "hit@1": 0.4953,
+    "hit@5": 0.7991,
+    "hit@10": 0.8551,
+    "mrr@10": 0.6193
+   }
+  },
+  "long": {
+   "n": 286,
+   "baseline": {
+    "n": 286,
+    "hit@1": 0.3636,
+    "hit@5": 0.6608,
+    "hit@10": 0.7552,
+    "mrr@10": 0.4988
+   },
+   "rerank@20": {
+    "n": 286,
+    "hit@1": 0.514,
+    "hit@5": 0.7692,
+    "hit@10": 0.8287,
+    "mrr@10": 0.6256
+   }
+  }
+ },
+ "misses_examples": [
+  {
+   "qid": "563",
+   "query": "1click 什么意思",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "4edfed957ecbdb824c597a80e173e936",
+    "965d41ad052a67a7f110ccf4682b31a9",
+    "7bf29d6ce8551992b2cbc5f7df4023c3",
+    "06711c7e322c89b96109f8ff9768e68e",
+    "876bf1632cf08c11bb9e4de419517825",
+    "474f4daaf79f576568491bf807dbdfd5",
+    "ef4152e2793ba0f218182daf88829533",
+    "2c1aef7045bc32ed43129ec33c437b0a",
+    "ee3b04e6a7667409c9f5975da1c2f4fc",
+    "15236e2ef6dbeb5d87807dc6302d42a8"
+   ],
+   "rerank_top10_docids": [
+    "7e5ea4c82b2d50f7cb4a4c63d24b1c56",
+    "fd2b296ec3636e663d783bf53831b572",
+    "ee3b04e6a7667409c9f5975da1c2f4fc",
+    "ef4152e2793ba0f218182daf88829533",
+    "2c1aef7045bc32ed43129ec33c437b0a",
+    "4edfed957ecbdb824c597a80e173e936",
+    "06711c7e322c89b96109f8ff9768e68e",
+    "965d41ad052a67a7f110ccf4682b31a9",
+    "d9829d5b6af2fe21a775c7ce0c139dff",
+    "2d5de4449ff1870254620945b8eca6c9"
+   ]
+  },
+  {
+   "qid": "285",
+   "query": "连体马桶盖怎么拆下来",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "6fdf6eebd2d015d2a5bed5c1dc366c5b",
+    "30ff1a497a6006fb544d09a86935df65",
+    "c22489fcf3335b00e6f094432d2d9121",
+    "a6239e9f3ab89780cfd61d7abcfa7b9b",
+    "14d12385260d1e52b35911400cd54287",
+    "c50961353116698c1137d901c938b675",
+    "d5baf8a88fbae03882ef38239f187142",
+    "0cf5dea2b9029f4790f12b171dd36e45",
+    "e303a90007753488490d98e60aae0088",
+    "0ca4bb915729a24c19e4745214d2026d"
+   ],
+   "rerank_top10_docids": [
+    "535f31830da049a8191c58d6ad5b1e17",
+    "d2d94eec7c3faf0c2e8f022e601bab6e",
+    "e303a90007753488490d98e60aae0088",
+    "c50961353116698c1137d901c938b675",
+    "0ca4bb915729a24c19e4745214d2026d",
+    "f5c17eb4b53a661b89e8d7c9a8ff84be",
+    "82ecd27f7f84d6522778d1b6f8ade61c",
+    "08be633be1a0c79638f1fde0b5fde09c",
+    "af288aea217c63b66b4bf96080e4fa87",
+    "0cf5dea2b9029f4790f12b171dd36e45"
+   ]
+  },
+  {
+   "qid": "1385",
+   "query": "would like的回答",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "f6b17dfd935f65ea401222d8ef6282ca",
+    "fc74b9c5d65eff9bfe96cf7674c4b3b7",
+    "a1c70ec7fc52b9904255f51b6a25e2fb",
+    "6947e6601d9daf7a62b0064a18658679",
+    "70ba58ab39766740a876226d49885ee9",
+    "6b89285d11fdf2501ae8a47418cb48d1",
+    "3385ca1f305103efa2b4b742a74136a0",
+    "ad68550f59f0692676aa0561f3080850",
+    "ea5488805e857e0b4056e63ea3e2f2a8",
+    "6bada3c6d6df53a560e9aa123bfdeb35"
+   ],
+   "rerank_top10_docids": [
+    "70ba58ab39766740a876226d49885ee9",
+    "6b89285d11fdf2501ae8a47418cb48d1",
+    "40f661b79b8b401e65f455c2d9c35fe1",
+    "ea5488805e857e0b4056e63ea3e2f2a8",
+    "6b0e90c6bc26c4ac70e56fdb471af529",
+    "72b324ef4f07fc4ac96b30847d9c1e81",
+    "fbaaa9d8915a51a1c29616659ffcfa7a",
+    "fc74b9c5d65eff9bfe96cf7674c4b3b7",
+    "e1b261bf3dfcd7dc7accf2e8ba40c0a1",
+    "a1c70ec7fc52b9904255f51b6a25e2fb"
+   ]
+  },
+  {
+   "qid": "1516",
+   "query": "华硕a450怎么样",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "c406a5473080c5c0a4b377f4776361f9",
+    "6f3f7f11df34abc993477447e653773d",
+    "f8b6b3b6a4308464ee8c15f7692deccc",
+    "66143b758f03bb1de477e0c22223bb21",
+    "ad7ab6354358bd986fba9b9beee69e85",
+    "87d274523333a2e3fbb037145000d49c",
+    "e696adcf283a0bcbd20da023bc4098e3",
+    "c074ecb9b36b50d17ee01a611a79d74a",
+    "189c6142dc48c8c3e3c7e5bfe5607adb",
+    "d3f0a15f19635c2d12590e746b5fb3b9"
+   ],
+   "rerank_top10_docids": [
+    "6f3f7f11df34abc993477447e653773d",
+    "87d274523333a2e3fbb037145000d49c",
+    "e696adcf283a0bcbd20da023bc4098e3",
+    "d18c3929913fb9b62a204bfdb4d9d690",
+    "d3f0a15f19635c2d12590e746b5fb3b9",
+    "4782418c2c2a23d36368ecc139e98729",
+    "9a44fc3a5d6f446f2dabb39d13611d53",
+    "f8b6b3b6a4308464ee8c15f7692deccc",
+    "4195099693bc4d3f174f1beaee6e7e41",
+    "7efad0385df5bc5a33745ce5cf58df92"
+   ]
+  },
+  {
+   "qid": "447",
+   "query": "向内求是什么意思",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "d8ebfae0cb64a298ef849c8fda9a46f8",
+    "8d5ad67915535c3f3cd1a3646eb776ee",
+    "f1dc094c347ab9dcce9d7a923dc814bf",
+    "259a754695aa17a25a0b7f394462a90e",
+    "dee049496ef9396c1bd59ba8864af807",
+    "03ef5a2f829723166779f821e6847f04",
+    "882e6ecfb45860301a5a92f9d565a60d",
+    "dcb2a243f14cc1e92e312e347df73f2e",
+    "b0a1197938e33c335a15c833b1208e1c",
+    "08b03689fd7a8be8813ec94c5c527d07"
+   ],
+   "rerank_top10_docids": [
+    "d8ebfae0cb64a298ef849c8fda9a46f8",
+    "1766dd6ef20c975abeb97606755722ad",
+    "259a754695aa17a25a0b7f394462a90e",
+    "03ef5a2f829723166779f821e6847f04",
+    "b0a1197938e33c335a15c833b1208e1c",
+    "dcb2a243f14cc1e92e312e347df73f2e",
+    "882e6ecfb45860301a5a92f9d565a60d",
+    "f1dc094c347ab9dcce9d7a923dc814bf",
+    "ab7fc6664d109d9faead03eba7364805",
+    "a4a023afd7a2cadef4fccac727a55b12"
+   ]
+  },
+  {
+   "qid": "476",
+   "query": "为什么京东商城打不开",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "f97293be101f98a8c26e173ed78010e4",
+    "19df0a8a593cbf43c38f5d8d4fb3bb87",
+    "87ebb4bb35c1a6b3044454251267d234",
+    "eca25aab7964efe50ff3dbc5b719fb1b",
+    "333bc81f942d1328887cc60e002321f3",
+    "11fbf2da2e46de1d8498d23ad9e4d934",
+    "fef9862d474138589cfe391719257845",
+    "1ce1e83836eb89c0a8e6a78da722b48d",
+    "152caa77b5ca0431fde63decb27008d8",
+    "e24d719f448df8bde6ec4ffa51e7691a"
+   ],
+   "rerank_top10_docids": [
+    "f97293be101f98a8c26e173ed78010e4",
+    "19df0a8a593cbf43c38f5d8d4fb3bb87",
+    "eb2708b442a1bfb9d70fca5f908b1519",
+    "e24d719f448df8bde6ec4ffa51e7691a",
+    "d0abc944bf3bb80a815b1cff00ec69cb",
+    "08fc88d1c676a7c7d88eba59dfa3f38c",
+    "333bc81f942d1328887cc60e002321f3",
+    "16ec19bcee9a53d605dabdc621521d50",
+    "7aba0297fae2ba5084e734d2854d6dbf",
+    "1ce1e83836eb89c0a8e6a78da722b48d"
+   ]
+  },
+  {
+   "qid": "1429",
+   "query": "cad导出pdf线条变粗",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "bc0829fc3c39b24ed9aa1fc9f8340638",
+    "df3017e5d51ff87b0db33c99d6e63375",
+    "9618d260ae51ebaf502dedbdc9813f7c",
+    "fe81e1faaf98da522a0ca4df035d7787",
+    "ac4d0a1a25e9eda8f8e9ee45ef434960",
+    "d0fdeebea79167d6aaccd854c38096bb",
+    "d8cae57bf63fd1c3e81f144d9b2f9e52",
+    "54c6ab7e70c63f8e10766e22687e1d18",
+    "d8f3e84fd5191add65cdcbe2407ed638",
+    "1c7c98509a5a93110751aec4df3e24f0"
+   ],
+   "rerank_top10_docids": [
+    "ac4d0a1a25e9eda8f8e9ee45ef434960",
+    "fe81e1faaf98da522a0ca4df035d7787",
+    "6c0bdc1947c2dcca9944341dff95df73",
+    "d0fdeebea79167d6aaccd854c38096bb",
+    "1d1ba0fcc615ad59bec28e8c97e65965",
+    "8af70d404fb6729445b457ad1f1a1958",
+    "d8cae57bf63fd1c3e81f144d9b2f9e52",
+    "54c6ab7e70c63f8e10766e22687e1d18",
+    "bc0829fc3c39b24ed9aa1fc9f8340638",
+    "0704242f2085cf315d1d7123dba0065c"
+   ]
+  },
+  {
+   "qid": "1287",
+   "query": "博途v13怎么仿真设置",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "a8d28d15492232197445842868bdd8c4",
+    "6898bd8b5c17481ccc55a8548798dcc7",
+    "07cc56c96b4464b80b5668b2934c505c",
+    "c0490c3f6c073805f2a0a3e6dca30ee2",
+    "6f086745794726df142aed7342ed14b1",
+    "8b8faf15d16d2b0c7af7fbbd58d979a0",
+    "c12d28e6ce59a3a25272c072e40e9335",
+    "47890c769d5d38151bbfd9657c2c62ff",
+    "b6567d090abddc2c85a48b16d50184b3",
+    "96e657a74fc7259fd830a4a3730091e9"
+   ],
+   "rerank_top10_docids": [
+    "6898bd8b5c17481ccc55a8548798dcc7",
+    "8b8faf15d16d2b0c7af7fbbd58d979a0",
+    "3df897451f5290dd3660c77926e0cb4c",
+    "e5266242b7b5886570b5c3234daea9a1",
+    "b4770f7a588e1941003d9185ab8d982b",
+    "c0490c3f6c073805f2a0a3e6dca30ee2",
+    "b24e0b00e60e404520c44bab53466ee5",
+    "67bcfe6352d1b67373349473cbae7dfb",
+    "47890c769d5d38151bbfd9657c2c62ff",
+    "699b61ac0a80b1fc931868f875407b77"
+   ]
+  },
+  {
+   "qid": "1266",
+   "query": "龙虎少年队2 插曲",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "f6661bcd1f55dc820b03095857398ecb",
+    "eeb28d1c14fb04746dd3a7478f6c5812",
+    "5fcd7333bda7437beaa5108d81ce1b7a",
+    "f25ad6c0f8133478c445dfa2342689ab",
+    "95194435ec1e20874c95a4421a8ca42c",
+    "75c64827d034b299e353f6bf8d93b724",
+    "e379a47f45fbfd6ba051e5561b3929fd",
+    "4cd67e5c7b218534e13342a9be2b7d3b",
+    "b3b1ad0a860de6f939e095df8e901113",
+    "3b7a19e7996ad8a2ff090496a2fe20ab"
+   ],
+   "rerank_top10_docids": [
+    "f6661bcd1f55dc820b03095857398ecb",
+    "2a4b95e129edc727b820bdb0fa6cbf44",
+    "82ba63c2f8a5344980610639bb3d8bab",
+    "9a315dcb436ad83161fa290b8b14ca93",
+    "4cd67e5c7b218534e13342a9be2b7d3b",
+    "27ba64fb3af769809b4fff9406ab11a4",
+    "78bd4410854711ccd9399a43b61ac472",
+    "3b7a19e7996ad8a2ff090496a2fe20ab",
+    "5a9691db82837d37c8cfc75c2a87c4ff",
+    "5fcd7333bda7437beaa5108d81ce1b7a"
+   ]
+  },
+  {
+   "qid": "1813",
+   "query": "酒柜层板倾斜几度",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "e3aac36efff730396e9c89c6805640c8",
+    "da524948fed9e42fa69a4fd295189d21",
+    "c5b9c48ab7aa7be2d6d8be52ecd9388c",
+    "4a00f72f270c89068d05950d497f2a2d",
+    "262ea476bab3e46200452aa268972f88",
+    "8e44c91a72de17675f47308946f2c4e6",
+    "80c49f7f0941d7d277615c05d4e15012",
+    "df8f74a42367c0598bd0216d6b12408c",
+    "eba1d21430908431557c3235a4b1c9ff",
+    "89b7db35308abbd8d527486dc20ba91f"
+   ],
+   "rerank_top10_docids": [
+    "e3aac36efff730396e9c89c6805640c8",
+    "da524948fed9e42fa69a4fd295189d21",
+    "c5b9c48ab7aa7be2d6d8be52ecd9388c",
+    "8e44c91a72de17675f47308946f2c4e6",
+    "df8f74a42367c0598bd0216d6b12408c",
+    "262ea476bab3e46200452aa268972f88",
+    "4a00f72f270c89068d05950d497f2a2d",
+    "eba1d21430908431557c3235a4b1c9ff",
+    "18a13826bf90ac601b6e4e8bc9888aac",
+    "0fda9aba8246fdc3c8d387afac349563"
+   ]
+  },
+  {
+   "qid": "466",
+   "query": "泽拉图如何逃离神庙",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "da58ce93e7b075e66881474f408dfaed",
+    "532cfa0f6575fc74022015ef01110b28",
+    "9f1317134b26520a92e853257bc62b0d",
+    "8ab0f397560346e6193605531a8baaa3",
+    "b2f69dfde197c1b9ec3e0b63a315f516",
+    "8603440c56cccaf609cf014c3f4f9387",
+    "b04a358568e2cad173b11c5fab58d85f",
+    "93cdef4fe44d6cf21e656d45512bb937",
+    "f0eea8e0fb2aad510e858dbff0945118",
+    "ec195a47b2cbd4c89961ec7b5113aeae"
+   ],
+   "rerank_top10_docids": [
+    "532cfa0f6575fc74022015ef01110b28",
+    "b2f69dfde197c1b9ec3e0b63a315f516",
+    "93cdef4fe44d6cf21e656d45512bb937",
+    "67a12a68a4302e988e05f43e4f184569",
+    "b04a358568e2cad173b11c5fab58d85f",
+    "ea5eba6667eaca7b0b5d0eed86263fe4",
+    "d1612fc526aa90458ba4b11687870776",
+    "9ba1ce7ea65739d383b6c56967b66748",
+    "ec195a47b2cbd4c89961ec7b5113aeae",
+    "bbb8be28220e5a6866a1a97a188e8ac4"
+   ]
+  },
+  {
+   "qid": "1301",
+   "query": "英雄联盟个别区进不去",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "26afb390dca27ac8c9eead77d30421c4",
+    "0eb2a576ba31706a425acf034c567fbb",
+    "1419be347e385f30ba00ef08627bc349",
+    "06d7861d1d167d37e8a4bb0ed72571f1",
+    "600ef1b6656eb674c4a05a64920cbc86",
+    "42b61ee884a5b1a9460f905eba3da898",
+    "ec684072bcf9a083547d9f7b725a1b38",
+    "1d606006db02b6fa465483450a4df7f8",
+    "63ed1f02b0e1001e7551ce9236179387",
+    "f0db5f6734b055601ad15eb8ab7c66f6"
+   ],
+   "rerank_top10_docids": [
+    "26afb390dca27ac8c9eead77d30421c4",
+    "fb5990f04527b56e1a295d34b95fe58b",
+    "1419be347e385f30ba00ef08627bc349",
+    "600ef1b6656eb674c4a05a64920cbc86",
+    "eccf9f96482bfc4a3e6f4d5188d8700d",
+    "42b61ee884a5b1a9460f905eba3da898",
+    "0ca6f009c0bb28eb12c7cf649e1e3901",
+    "0eb2a576ba31706a425acf034c567fbb",
+    "98f75f821657b0bf24f4e947172c2bfd",
+    "2ae1b7f30f07198016b482e52db77e50"
+   ]
+  },
+  {
+   "qid": "1300",
+   "query": "玩lol屏幕有波纹",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "fadd86916df4ed154b8a647c6bdbae4c",
+    "e86e6b995bff2efe7b49cf32dd9bfbe7",
+    "357df74a9915dc56f746ce522f2cd58e",
+    "8d4dd1e07cd5d5d2bc7cdf32a9f94167",
+    "685cc76a5173db75eac7e27b56ba592e",
+    "09765adb080f121632ba13fc44adc7ea",
+    "71bda8ff4d20781e299c126bc405207e",
+    "b699b264371c02dd97e79463cb3ce5d2",
+    "798940c6015e7cd29698b41817df30ba",
+    "9e57767bceb7ed18fb550219c9ac92fd"
+   ],
+   "rerank_top10_docids": [
+    "798940c6015e7cd29698b41817df30ba",
+    "8ed004461875dc0f1ce1410f535f8bbb",
+    "fadd86916df4ed154b8a647c6bdbae4c",
+    "e86e6b995bff2efe7b49cf32dd9bfbe7",
+    "357df74a9915dc56f746ce522f2cd58e",
+    "c14989f09d48538de7f0a5b295b1e579",
+    "45594acb1523aa0e16cf343a9614cc1b",
+    "0b77afec235be43e17420e6ce0b68425",
+    "09765adb080f121632ba13fc44adc7ea",
+    "8d4dd1e07cd5d5d2bc7cdf32a9f94167"
+   ]
+  },
+  {
+   "qid": "1140",
+   "query": "人流多钱",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "9347bc2e8e3a7ec9e1c9a956c8996db4",
+    "f5fbcaa29a770e7221147fc2fb1c7d32",
+    "967b0a14321b57435602a3df94d8fe34",
+    "36f0648a19d5a9fd905c46247a73be2a",
+    "4fca870732011485d9b73ddb1f10ab0c",
+    "449941e1026751082eb9d9a105bbe38d",
+    "ff8eb785ab1ce433414e91df0fd3c518",
+    "886a7c697db1f28be5d1cc22e75e5aef",
+    "aab638af40ecb9b111a79e0fac64e9bb",
+    "211c366463dc9ffe84bf2976a0fba343"
+   ],
+   "rerank_top10_docids": [
+    "967b0a14321b57435602a3df94d8fe34",
+    "9347bc2e8e3a7ec9e1c9a956c8996db4",
+    "ea3eb63a4621f31eb630615074bc34ae",
+    "337b13b7b03566f4cdf472ea1958467d",
+    "aab638af40ecb9b111a79e0fac64e9bb",
+    "f2451fa793070a6226f1cc6eca091ea1",
+    "36f0648a19d5a9fd905c46247a73be2a",
+    "97a9a4b729f497516dab59aaa54e77b1",
+    "4fca870732011485d9b73ddb1f10ab0c",
+    "2cdc0b3ea6b89a6127158b80caf4440f"
+   ]
+  },
+  {
+   "qid": "449",
+   "query": "偶像来了插曲有哪些",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "d6155865cae4dfa6df629e08dcfa21c0",
+    "9a315dcb436ad83161fa290b8b14ca93",
+    "08e36cca6adbc0435b06490779eae2f2",
+    "86ddd0a66ad958ceb7df4f32079506a7",
+    "e379a47f45fbfd6ba051e5561b3929fd",
+    "84931e6fd7d7185bc18d64cdcd9c8f07",
+    "af416d658372587e1c6ad99f3925cc7c",
+    "4961fdb21638bf02aa502599cfbaa4dd",
+    "2c0027fdb78927d4cc206c0e724af0c6",
+    "f03251554283853bf339061a941383b7"
+   ],
+   "rerank_top10_docids": [
+    "86ddd0a66ad958ceb7df4f32079506a7",
+    "6f683dfaf9366057e357bbe805261939",
+    "d6155865cae4dfa6df629e08dcfa21c0",
+    "9a315dcb436ad83161fa290b8b14ca93",
+    "f03251554283853bf339061a941383b7",
+    "2c0027fdb78927d4cc206c0e724af0c6",
+    "5c3a482ae25f89ebd7caae05e410ca82",
+    "4961fdb21638bf02aa502599cfbaa4dd",
+    "af416d658372587e1c6ad99f3925cc7c",
+    "e379a47f45fbfd6ba051e5561b3929fd"
+   ]
+  },
+  {
+   "qid": "1726",
+   "query": "cad图纸怎么导入ps",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "402cde81f423cd76098a464e8099dd4a",
+    "65ea1eae4ac5406f60c3912bb4e7d258",
+    "4bbac71d8f74b6c280d055e3b4c30754",
+    "a274b67f2a8fbf95d8e25a460100f3ca",
+    "ffbd9e57f87081c6f564c30c9ac79205",
+    "5eabd720b56819a0af5a02e79829be78",
+    "4cf6b93c0541f9771227d4f950d1a7de",
+    "7c2cf41276692313c62e9ce60d4897cd",
+    "0d03d1f260fa195b206934aef641c182",
+    "1daad71868fab0557db5874d5599e31e"
+   ],
+   "rerank_top10_docids": [
+    "a274b67f2a8fbf95d8e25a460100f3ca",
+    "4cf6b93c0541f9771227d4f950d1a7de",
+    "ffbd9e57f87081c6f564c30c9ac79205",
+    "8a44be73ed401b5179be5cdcb0f4b461",
+    "a4e67fcb271e7cea51d0c4e382e80f18",
+    "2844a59f62e8402dbedbe825c765bf59",
+    "402cde81f423cd76098a464e8099dd4a",
+    "dd0448f6796c33359ef10e58418d5e06",
+    "7c2cf41276692313c62e9ce60d4897cd",
+    "680162778e95823bbeae3d0a59b6dbf8"
+   ]
+  },
+  {
+   "qid": "1573",
+   "query": "不动产登记包括小产权房吗",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "5938d27c6b119eb2aa29abbb9a4bfa61",
+    "e8d30271a67d9d25afba64c5afd4e54d",
+    "b6863c9e5f3585c0dc675c6bc217ce6f",
+    "09036d9bf9e4ada643706d046510aa2b",
+    "d40f366b82ebaf04045b721013a20c29",
+    "8081515f511766c9d91722576449d09f",
+    "2749cd4344b246a3a1a64763aae589e3",
+    "f1b6f170d87cfdbf466b891058fed18a",
+    "9e2e38a212e93b807659f4add088be89",
+    "f9541b395e35c1de9bda097b1aed9f6f"
+   ],
+   "rerank_top10_docids": [
+    "d833acc1b27503e68f4c00bea2dcdd75",
+    "785352740e5c3878d3535c0a45f4d00d",
+    "5938d27c6b119eb2aa29abbb9a4bfa61",
+    "b6863c9e5f3585c0dc675c6bc217ce6f",
+    "d40f366b82ebaf04045b721013a20c29",
+    "f9541b395e35c1de9bda097b1aed9f6f",
+    "09036d9bf9e4ada643706d046510aa2b",
+    "e8d30271a67d9d25afba64c5afd4e54d",
+    "f1b6f170d87cfdbf466b891058fed18a",
+    "9497240bcd3fda1caa584a1f459f016b"
+   ]
+  },
+  {
+   "qid": "114",
+   "query": "win8怎么待机不断网",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "927d95fb0a376e0e845d60ebee05cb38",
+    "c0f7899e5a9929e49ff914d70d209c99",
+    "61f9f3e8c2d1a6887cbff5c8c383853c",
+    "2c8089c35c6acde921455adac798d31a",
+    "70b271a4f4c2335c855b085378fa46fa",
+    "9702f96f3ce4ad00182cdb92f1e619d0",
+    "f0da3ab661807185db1c82d2aad04d15",
+    "2676656023d497aa6ae8b57ac2bcf819",
+    "af281f78ceefa76fc7080eb349aa5240",
+    "9e5365e3f269c63968153f26e7b1dfb6"
+   ],
+   "rerank_top10_docids": [
+    "927d95fb0a376e0e845d60ebee05cb38",
+    "9702f96f3ce4ad00182cdb92f1e619d0",
+    "7cf6bce99c99089a7cd3ff4520588f36",
+    "c0f7899e5a9929e49ff914d70d209c99",
+    "f0da3ab661807185db1c82d2aad04d15",
+    "d753727800b051370d9267977098b60e",
+    "61f9f3e8c2d1a6887cbff5c8c383853c",
+    "2c8089c35c6acde921455adac798d31a",
+    "7d0515e6bb54c6971054eaae91f1ea24",
+    "afef1cd83d9b214b7b7aa9f73cbf121e"
+   ]
+  },
+  {
+   "qid": "135",
+   "query": "百艺舒是什么药",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "c559e8540a973a7e961d9adf60ca2925",
+    "9aff271b8a6cc8231399773910031f63",
+    "ee8d67c5d697bdeea494f3cdcaf44c87",
+    "107e695e482cc22f4263ec30756fc30b",
+    "b934aa99f38770a5c68559e5091ba060",
+    "d90e7ffa99e67ba3780c712799404cb9",
+    "fea20323cdbd5a89b2b2233c4c22afbf",
+    "c4defb19c196652a9f70016163ff873a",
+    "23bfd8130a3689e8afbfd1c0f5ad3df9",
+    "59413cf6d580e98fa0db496cd31b88f1"
+   ],
+   "rerank_top10_docids": [
+    "9aff271b8a6cc8231399773910031f63",
+    "c559e8540a973a7e961d9adf60ca2925",
+    "b934aa99f38770a5c68559e5091ba060",
+    "107e695e482cc22f4263ec30756fc30b",
+    "ee8d67c5d697bdeea494f3cdcaf44c87",
+    "96fc79ab6c76bacdb47c4c564702d876",
+    "17e87d29ca988b047278171cb5cf92d5",
+    "6bb7d8e540ab88fe1e03700943500089",
+    "23bfd8130a3689e8afbfd1c0f5ad3df9",
+    "c4defb19c196652a9f70016163ff873a"
+   ]
+  },
+  {
+   "qid": "1470",
+   "query": "酷的英文名",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "848d9648f2339c5f57e2e5b9f6ef4bff",
+    "9c234b8fb3958a337875f6cc2a391749",
+    "b1e6f3eb0566de3a5a8370c55a6febb1",
+    "3d943a77d2edcc4c3efef432f4068052",
+    "37424a888f5762ce50353dcfb7b27938",
+    "6545d690e210ebf0839255e7bb2c0f2b",
+    "500fb795c02276890e33804d15d89635",
+    "930b750b277c84caf513e89a21706c70",
+    "56e2caae7966f0cfdcfcf451161bc5d9",
+    "e003e60a0a6406f2d9a99addb9d1019c"
+   ],
+   "rerank_top10_docids": [
+    "3ad80b795c2718c34e08d3ea775ae6eb",
+    "56e2caae7966f0cfdcfcf451161bc5d9",
+    "d43fcc1eb312833081a822bfcaf5eee1",
+    "848d9648f2339c5f57e2e5b9f6ef4bff",
+    "e003e60a0a6406f2d9a99addb9d1019c",
+    "4f1399a1f18fc039f985b7246e760307",
+    "b1e6f3eb0566de3a5a8370c55a6febb1",
+    "6545d690e210ebf0839255e7bb2c0f2b",
+    "7a2936a19de8898c1d29106573933d71",
+    "811d502060e0d72fd359af4c2708fc15"
+   ]
+  },
+  {
+   "qid": "435",
+   "query": "蚕豆病不能吃什么水果",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "65790ee07d8aca39b162bc0d0288bdc0",
+    "791360682c12a1d6c3dcc3a05391e6b5",
+    "b8b5f12d55aca994b9ecbcf06ac06e5c",
+    "5acd743f7a88799cbcf069fc438fc955",
+    "2eba92e3ff99c8c4dfd21a18258f3b78",
+    "fa3b1d79c5ec11d8de36818e83ac2680",
+    "eec1e335c1ade97be0483be368d90bdd",
+    "45c3a95455638047c015f735a05fa8e5",
+    "7008ecf131c03bbad4d4a7d8c0911b7b",
+    "018e8998cf8b203d5eab0d8e3265a3b9"
+   ],
+   "rerank_top10_docids": [
+    "5acd743f7a88799cbcf069fc438fc955",
+    "b8b5f12d55aca994b9ecbcf06ac06e5c",
+    "7008ecf131c03bbad4d4a7d8c0911b7b",
+    "791360682c12a1d6c3dcc3a05391e6b5",
+    "fa3b1d79c5ec11d8de36818e83ac2680",
+    "65790ee07d8aca39b162bc0d0288bdc0",
+    "e6df1c3a78709b536fa7383afc56d66e",
+    "867d8cfdcb142c76aa7109d002e08830",
+    "e110e88b68b12f4dd788b295de608937",
+    "ff67239a5e93ca9465a32bdfdfe745f2"
+   ]
+  },
+  {
+   "qid": "1811",
+   "query": "安装热血传奇显示分卷资源错误",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "abe6b1eb5b491163fdf2fb2b1ce3ee2f",
+    "d58f1ae201a2b9005aa758f26ab16f95",
+    "bcd81312f6732a00c89825504af4d46b",
+    "05cebc4591a2c173cf100506b7e4c74e",
+    "add1ef64e86c6939488cf1ed33be714e",
+    "e225e96824bc2f02cb2561b0808b9edb",
+    "993ff8912168a53e5ba142f480d64d31",
+    "37a9abf377857b85003808483074fdd6",
+    "9a057f70c1aa1d62de20e839a41ee8cf",
+    "84abe0d3b18bb234892f4579172f4099"
+   ],
+   "rerank_top10_docids": [
+    "9a057f70c1aa1d62de20e839a41ee8cf",
+    "bcd81312f6732a00c89825504af4d46b",
+    "abe6b1eb5b491163fdf2fb2b1ce3ee2f",
+    "84abe0d3b18bb234892f4579172f4099",
+    "d58f1ae201a2b9005aa758f26ab16f95",
+    "993ff8912168a53e5ba142f480d64d31",
+    "5c9f9e780c7694ad863061388f33e641",
+    "add1ef64e86c6939488cf1ed33be714e",
+    "ca05bf058367c29d639903b6adcb04ac",
+    "722708d405d25e582281d121b164a7fe"
+   ]
+  },
+  {
+   "qid": "1316",
+   "query": "脚非常臭",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "a27735911551938dd57fa383144d0177",
+    "33ff70e169f6c3f74070feeca406b9d6",
+    "a219ec95bef2e29c48ea26084db2d636",
+    "71f0a48ed6f7226ad851c2eb6a2f6409",
+    "aaf4397f06622efd0889144b87b74186",
+    "88a0788c166cd6c762066694481b2dfc",
+    "d3c234a5dffb4fa2dd0e79a9bda2d730",
+    "68a92b2e1df6c3a681b2fc97bd5a7929",
+    "287d9a2461fcfc2e76089197fbc0071e",
+    "377eb2e0642b9c01eaf383f64051cc40"
+   ],
+   "rerank_top10_docids": [
+    "d3c234a5dffb4fa2dd0e79a9bda2d730",
+    "a219ec95bef2e29c48ea26084db2d636",
+    "88a0788c166cd6c762066694481b2dfc",
+    "fe88a84bd8c300935620cb9966b9a467",
+    "94566cae73803470fe74f5c6f4615079",
+    "33ff70e169f6c3f74070feeca406b9d6",
+    "aaf4397f06622efd0889144b87b74186",
+    "20cb562e518d697ad4da2eb949179246",
+    "e29f78fa3cf6acada629241ee2a5dc5b",
+    "71f0a48ed6f7226ad851c2eb6a2f6409"
+   ]
+  },
+  {
+   "qid": "939",
+   "query": "木余是什么字",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "385c5bbf7bdbc4c752f286325772c50e",
+    "3cf29356cea283c20ce41f9127f25c5a",
+    "c497704489d905608059559dc04363ab",
+    "97c89700b10bcc140173f8a72ae0daef",
+    "88e8fbe262d8b5f8b082cdbb7973186d",
+    "793ba0de344e3fe28ba4dd150719df8e",
+    "949b28e859da093555d400047b33d88c",
+    "ff8b4033e0286b8034342e93e8c23e6b",
+    "23c22918119983aa91ecdc898040f287",
+    "1c6d176da433f03f68d4b43c75c5fabe"
+   ],
+   "rerank_top10_docids": [
+    "0f1ff9ee29c03328624432c5c85ea3f1",
+    "4ed9da1b4e46ea043789f34cde7eafb5",
+    "ff8b4033e0286b8034342e93e8c23e6b",
+    "949b28e859da093555d400047b33d88c",
+    "a727294d629ec2bdeab25c18f6d5a53a",
+    "7651ed43a577aca43b6c07d3bd3cce76",
+    "793ba0de344e3fe28ba4dd150719df8e",
+    "1c6d176da433f03f68d4b43c75c5fabe",
+    "04c2f4c5818b6df830308d2ca9fb5f61",
+    "23c22918119983aa91ecdc898040f287"
+   ]
+  },
+  {
+   "qid": "538",
+   "query": "北野望有无码片吗",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "6925ef569162ed250df4fe74a8f13a50",
+    "45bb625a61c005dfada4207407120900",
+    "9f044ee573a37000b543cd3a68dd7131",
+    "3fd041ecd48bc2ff95b21c0f78f9e8a5",
+    "cf8f04d591ba116a17dacdd944c85a99",
+    "03e14b25cd047b6e416682cab9b0964b",
+    "7a1935dd68aa89279a6f51a00f527366",
+    "e79d963ec437a217fed55a226aeb0e01",
+    "d4396b1d69f644314c49eebc31037c38",
+    "de382fbf23234cb6d35852c0c7393146"
+   ],
+   "rerank_top10_docids": [
+    "6925ef569162ed250df4fe74a8f13a50",
+    "45bb625a61c005dfada4207407120900",
+    "9f044ee573a37000b543cd3a68dd7131",
+    "7a1935dd68aa89279a6f51a00f527366",
+    "e79d963ec437a217fed55a226aeb0e01",
+    "03e14b25cd047b6e416682cab9b0964b",
+    "cf8f04d591ba116a17dacdd944c85a99",
+    "3fd041ecd48bc2ff95b21c0f78f9e8a5",
+    "d047f283f7055ccfc16b194b2784ad06",
+    "e5ce3c7eb197d66a59fcda747c9348e6"
+   ]
+  },
+  {
+   "qid": "1529",
+   "query": "coreldraw文件不显示图标",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "81cff5e9f3dce041ebfea20df178eaaf",
+    "4461d6fe3b022863dd9f7a1435ebec62",
+    "08fa91ee364ec1f6bf11c842a8447c88",
+    "9555df23b2d20e40e0749208f3d212f4",
+    "16426692ba03be265ce57999d23d3df5",
+    "f852da050f1480ff54597dfaa1bb633b",
+    "d1c45f19e7c72e1cfb599bb8841f248c",
+    "ab9a5ee35b3986ddc9e37c2cf0d07257",
+    "12c150833c9b98c97f673b65b33d2a63",
+    "dbcb93132a9dab578063e594ac214a1d"
+   ],
+   "rerank_top10_docids": [
+    "10364f094c272d98715f959cf1bde85c",
+    "81cff5e9f3dce041ebfea20df178eaaf",
+    "08fa91ee364ec1f6bf11c842a8447c88",
+    "4461d6fe3b022863dd9f7a1435ebec62",
+    "d1c45f19e7c72e1cfb599bb8841f248c",
+    "dbcb93132a9dab578063e594ac214a1d",
+    "e2467071570c7db59a37c9a19d54cae3",
+    "cb4361c108a4ea63e2aa19d133e2d225",
+    "9555df23b2d20e40e0749208f3d212f4",
+    "4e3cbfea01eb229efc14841ca3503f90"
+   ]
+  },
+  {
+   "qid": "224",
+   "query": "北京隆盛泰是不是真的",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "a491b646aeddcc06114deab3f988afe3",
+    "18a3c770ac613d82cc5faf2e4beacda1",
+    "7baab875e6c42203ade438d903db19d7",
+    "87e1dd6c91449fa1539b4616e1bbf9b2",
+    "77d6a9d979de5004bf1645fbbb447ba9",
+    "666e66291d4c06af0198cc8ec9b2bda1",
+    "ee2d6a0cc5663273594ab7c8d5dc96cb",
+    "2151ad482467fcbd5fda93655a8ce8dd",
+    "237b66f43b38cffed74b401b5185a8ce",
+    "43aa376d00fecbb85299e89a5872a207"
+   ],
+   "rerank_top10_docids": [
+    "666e66291d4c06af0198cc8ec9b2bda1",
+    "a491b646aeddcc06114deab3f988afe3",
+    "87e1dd6c91449fa1539b4616e1bbf9b2",
+    "b3e5f13fcbacad66664f78e0cfb41c69",
+    "237b66f43b38cffed74b401b5185a8ce",
+    "ee2d6a0cc5663273594ab7c8d5dc96cb",
+    "43aa376d00fecbb85299e89a5872a207",
+    "7baab875e6c42203ade438d903db19d7",
+    "2151ad482467fcbd5fda93655a8ce8dd",
+    "372687d2b4f0ba4b7fd1f3468d0e9962"
+   ]
+  },
+  {
+   "qid": "313",
+   "query": "ps不能批处理",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "39cac5255731c697ef89ea8089fa1cf6",
+    "49455bafa758d6eb2f74ccabc9e0b3bd",
+    "7c9506be26689354154831a16222f8ea",
+    "0fbe9bb65a22adf9af4ab9fc6ccfd145",
+    "01e0cb5d7d4cd7968bea87ecb7b2dfbb",
+    "35d347ea354011f40716bd66f7b9c752",
+    "dee04f83fd094ab822c29f3157dd199d",
+    "c2ea9007f17d0b895f70515d2d0792b8",
+    "cfa4c126a370bca08326d41ee7eba0cf",
+    "938720122cb550a707fe13eb12568bb2"
+   ],
+   "rerank_top10_docids": [
+    "80fe31cdfdf2431768140468040b1eb9",
+    "39cac5255731c697ef89ea8089fa1cf6",
+    "0fbe9bb65a22adf9af4ab9fc6ccfd145",
+    "49455bafa758d6eb2f74ccabc9e0b3bd",
+    "dee04f83fd094ab822c29f3157dd199d",
+    "18f672596aa46ba431f30c182164c0bb",
+    "0f84f44306edf0628c539000f72bfeac",
+    "01e0cb5d7d4cd7968bea87ecb7b2dfbb",
+    "e5822089ec5520999df323e42b14a955",
+    "9dc88c7a95e20216781af38b0be3f0cb"
+   ]
+  },
+  {
+   "qid": "1476",
+   "query": "win8怎么增加c盘空间",
+   "positive_in_top50": false,
+   "baseline_top10": [
+    "aec0e6c8df29f63089ac1f65e46018c9",
+    "3e7f25661b9c9e7465ae2e5d0b8c40ff",
+    "537b4f9b1a8a8be2dc971a19eb7a1ed4",
+    "e6e42dc59c06bef51ae6a58537293a47",
+    "7022534166439542cf5a2396d44bc416",
+    "2a243096a6d9c0b4ce41566bceac3993",
+    "20de2865a7ccf6274ce24b06ca384842",
+    "ed80a2d10b9e13d498d4975bb7d4bba0",
+    "4be99a3bceda4fabde63fdfba26b1072",
+    "9326de99f2228a7660d9cee977b5036e"
+   ],
+   "rerank_top10_docids": [
+    "20de2865a7ccf6274ce24b06ca384842",
+    "ed80a2d10b9e13d498d4975bb7d4bba0",
+    "6c421f09fdef70cb9bcd1340e199622b",
+    "d23ac828cc7595214a0b269a892af9b8",
+    "537b4f9b1a8a8be2dc971a19eb7a1ed4",
+    "284d11089c6f0797baf54e7164e6e4f1",
+    "86ebfbaabc8574dfef8ab37aaf4a0d59",
+    "9326de99f2228a7660d9cee977b5036e",
+    "ce00fdfcfacdfe79cbca3c52746497dc",
+    "8b682d353c2773b0264ee2ba160c64d0"
+   ]
+  },
+  {
+   "qid": "1793",
+   "query": "焊锡发黑",
+   "positive_in_top50": true,
+   "baseline_top10": [
+    "f9be25a18c349a84ca6f37d2ace2e950",
+    "a55a3d2e2bc464626b44e93de55d011c",
+    "201a1fa90c2d970359c5ed1c648d4775",
+    "3b74b597f4033e7098fdcbc399bfe1ec",
+    "d2ed1b909d14e8544e41a613664bcc9e",
+    "ce62d18c3ee05647edbb019149524c9d",
+    "6e35ff7dfa8b6a67140e72dbb548b734",
+    "88d6f2f5fcdfc27b6aa59cfc442c9fbb",
+    "d5d85ea8e2f4110585a200493bb4ad68",
+    "46e6a2bde182e0fb58b27779a07144a5"
+   ],
+   "rerank_top10_docids": [
+    "3b74b597f4033e7098fdcbc399bfe1ec",
+    "e5e67c4dacaebe6db02bf5cce4e79141",
+    "f9be25a18c349a84ca6f37d2ace2e950",
+    "201a1fa90c2d970359c5ed1c648d4775",
+    "297399519aebd2608c89f8c016959587",
+    "88d6f2f5fcdfc27b6aa59cfc442c9fbb",
+    "a55a3d2e2bc464626b44e93de55d011c",
+    "d5d85ea8e2f4110585a200493bb4ad68",
+    "d2ed1b909d14e8544e41a613664bcc9e",
+    "acb8462cbb36501d79f3669427cbbc73"
+   ]
+  }
+ ]
+}
