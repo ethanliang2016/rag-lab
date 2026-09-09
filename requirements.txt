@@ -1,3 +1,6 @@
 sentence-transformers>=2.7
 chromadb>=0.5
 langchain-text-splitters>=0.2
+datasets>=2.21
+transformers>=4.40
+# vllm>=0.6  # 实验三 GPU 跑批专用;Windows 本地通常无法安装,AutoDL 上单独 pip install vllm
