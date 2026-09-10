@@ -7,7 +7,7 @@
 | 1 | [RAG 分块策略实测](https://blog.csdn.net/weixin_39885962/article/details/164459646) | 10 篇中文技术文 × 100 题 × 9 组分块配置 | v1.1 已发布 |
 | 2 | [RAG 重排序实测](https://blog.csdn.net/weixin_39885962/article/details/164712425) | DuReader-retrieval 93,885 段落 × 500 真实查询 × 召回/重排对照 | v1 已发布(2026-09-09) |
 | 3 | [RAG 生成层实测](https://blog.csdn.net/weixin_39885962/article/details/164747501) | CMRC2018 dev 3,219 题 × 三档上下文 × Qwen2.5-7B 生成 | v1 已发布(2026-09-09 16:20;6,208 次生成,AutoDL RTX 4090D 跑批) |
-| 4 | RAG 评测可信性实测 | 6,208 次生成 × 四组 LLM 裁判(提示词三档 / 双模型规模 / 人工锚点),13,708 条打分 | v1 成稿(2026-09-10,待发布) |
+| 4 | [RAG 评测可信性实测](https://blog.csdn.net/weixin_39885962/article/details/164858910) | 6,208 次生成 × 四组 LLM 裁判(提示词三档 / 双模型规模 / 人工锚点),13,708 条打分 | v1 已发布(2026-09-10;13,708 条裁判输出,AutoDL RTX 4090D 跑批) |
 
 ## 实验一:分块策略实测
 
