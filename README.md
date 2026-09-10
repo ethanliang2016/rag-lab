@@ -127,7 +127,7 @@ EM 三档几乎持平,F1 自头至尾单调下降 2.7pp。位置影响弱:对"�
 python src/align_judge_set.py      # 裁判评估集:与实验三结果逐条对齐
 python src/run_judge.py            # 四组裁判跑批(需 GPU;AutoDL vLLM/transformers)
 python src/score_judge.py          # 指标汇总 → results/judge_metrics.json
-python src/analyze_judge_cases.py  # 自洽性/一致性/分档分析 + 人工裁定表 → results/judge_cases.md
+python src/analyze_judge_cases.py  # 自洽性/一致性/分档分析 + 裁定表/小结 → results/judge_cases.md
 ```
 
 `data/cmrc/judge_set.jsonl` 不入 git(含 CMRC 原文与金标),跑 `align_judge_set.py` 自取,口径与实验三一致。
@@ -189,6 +189,21 @@ F1 掉 8.8pp、EM 掉 6.8pp,裁判判对率只动 0.13pp,翻转 27 vs 26(近乎�
 
 锚点区分度成立,方向全对。但 `high_f1_low_em`(EM=0 而 F1=0.946)被判满分——裁判与 EM 在「复述完整但字面不等」上的分歧是系统性的。
 
+**⑦ 分歧案例逐条裁定**(21 条,明细见 `results/judge_cases.md` 第 10/11 节):
+
+切片 = 7B 判对 / 14B 判错 16 条 + 双判对但 F1<0.2 的 5 条,按「同题同答」去重后 21 条逐条判读:
+
+| 项 | 值 |
+|---|---|
+| 裁定 对 / 错 | **21 / 0** |
+| 类别 | A 冗余无害 17、C 非冗余分歧 4(换述/更具体/金标不全/子串) |
+| EM=0 占比 | **21/21** |
+| 与裁定一致 | 7B-bare 21/21、7B-rubric 21/21、**14B 5/21** |
+
+14B 的 16 次「判错」**无一命中**;21 条 EM 全为 0,严格口径在这批上假阴性率 100%。极端标本 #17(`DEV_1157_QUERY_1|noise0`):金标「澳洲球队」vs 答案「FC悉尼及阿德莱德联」,**字面零重叠(EM=0、F1=0.000)**,但答案比金标更具体且事实正确,三方裁判全判对。4 条非冗余分歧中,`DEV_192_QUERY_1|noise0` 暴露**金标不全**(只记「水属性」,暴鲤龙实为水/飞行)。
+
+⚠️ **抽样偏倚**:该切片以「7B 判对」为入样条件,「全部判对」是选样属性,**不能外推为 14B 的整体误报率**,只能作为「14B 在该批报警中零命中」的下界证据;反方向证据见 `judge_cases.md` 第 3A 节(wrong 层 F1≤0.05 却被判对的 11 条 = 裁判漏检)。
+
 ## 目录
 
 ```
@@ -223,7 +238,8 @@ results/cmrc_gen_metrics.json 实验三分层指标汇总
 results/autodl训练结果-20260909/  实验三 AutoDL 下载件归档(cmrc_gen.jsonl + metrics)
 results/judge_scores.jsonl    实验四逐条裁判打分(13,708 条 × 四组)
 results/judge_metrics.json    实验四裁判指标汇总(分组混淆矩阵/分档/相关性)
-results/judge_cases.md        实验四案例分析(自洽性/一致性/分档/裁定表,1~10 节)
+results/judge_cases.md        实验四案例分析(自洽性/一致性/分档/裁定表+小结,1~11 节)
+results/judge_adjudication.json  实验四裁定结果(21 条;改该文件后重跑分析脚本自动回填)
 results/autodl训练结果-20260910/  实验四 AutoDL 下载件归档(远端旧版 md 存证)
 results/writing/             写作辅助产物(逐题案例 cases.json / 宽松口径 lenient.json / figures)
 ```

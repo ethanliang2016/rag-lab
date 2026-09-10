@@ -1,0 +1,118 @@
+{
+  "_meta": {
+    "desc": "实验四「人工裁定表」的裁定结果（当前为 AI 预裁定，待人工复核）",
+    "key_format": "<qid>|<gen_variant>",
+    "verdict": "1 = 判对 / 0 = 判错",
+    "cls": "A = 冗余无害（金标完整、多余内容不矛盾）；B = 冗余有害（多余内容引入错误信息）；C = 非冗余分歧（换述 / 更具体 / 金标不全 / 答案为金标子串）",
+    "n": 21,
+    "how_to_use": "改本文件后重跑 python src/analyze_judge_cases.py，第 10/11 节会按此回填",
+    "status": "AI 预裁定：按 A/B/C 定义逐条判读，人工复核请直接修改 items 中的 verdict / cls / note"
+  },
+  "items": {
+    "DEV_1025_QUERY_2|noise0": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "答首句即含年份 2012，其余为背景描述。14B「未回答问题核心」不成立（空噪场景：EM/F1 只认字面，年份被句子淹没）"
+    },
+    "DEV_1136_QUERY_1|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "年份 1956 正确且给出合并月份日。14B 以「问的是年份而非具体日期」判错，但答案年份就在句中"
+    },
+    "DEV_1603_QUERY_2|noise0": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "两所幼稚园全中，多余「14 个街市档位」不矛盾"
+    },
+    "DEV_192_QUERY_1|noise0": {
+      "verdict": 1,
+      "cls": "C",
+      "note": "金标只记「水属性」，而暴鲤龙实为水／飞行。模型补全且事实正确 → 属金标不全，非模型冗余。EM/F1 与 14B 同时误伤"
+    },
+    "DEV_201_QUERY_1|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "1955 年一致，后续生平不矛盾"
+    },
+    "DEV_278_QUERY_1|noise0": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「贪婪蛮横」已含，嘉靖帝对比句不构成矛盾"
+    },
+    "DEV_278_QUERY_1|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "同题另一噪声档，多「嘉靖帝护短」一句，仍不矛盾"
+    },
+    "DEV_318_QUERY_1|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「黄绿色」已含，余为背鳍／体色描述"
+    },
+    "DEV_377_QUERY_0|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「引起世界范围的恐慌」已含，后续数据为背景"
+    },
+    "DEV_383_QUERY_1|noise0": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「两种」已含，后接开机方式解释"
+    },
+    "DEV_387_QUERY_0|noise0": {
+      "verdict": 1,
+      "cls": "C",
+      "note": "问「中国古代成人礼」，答冠礼／笄礼为切题正解；金标是通用定义（口径过宽），二者非冗余关系"
+    },
+    "DEV_430_QUERY_2|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「波士顿凯尔特人队」已含，后续生涯不矛盾"
+    },
+    "DEV_454_QUERY_2|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「65-70 厘米」已含，尾长／体重不矛盾"
+    },
+    "DEV_473_QUERY_2|noise0": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "果实／芒果／韶子全中，补食性不矛盾"
+    },
+    "DEV_47_QUERY_3|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「拉尔夫·本奇」已含，受浸细节不矛盾"
+    },
+    "DEV_495_QUERY_2|noise0": {
+      "verdict": 1,
+      "cls": "C",
+      "note": "答案为金标子串（缺「在直系和奉系之外」这一范围限定语），但已含问题所问核心。本条 F1 全表最高 0.733 却 EM=0 —— 纯 EM 完全相等导致的假阴性。边界条，若按「信息不完整」口径可判错"
+    },
+    "DEV_1157_QUERY_1|noise0": {
+      "verdict": 1,
+      "cls": "C",
+      "note": "金标为类属「澳洲球队」，答案给出具体球队（FC 悉尼、阿德莱德联）—— 更具体且正确。字面零重叠 → EM=0 且 F1=0.000，严格口径全线归零的极端标本"
+    },
+    "DEV_387_QUERY_3|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「15 岁」已含，笄礼提早／延后规则为补充"
+    },
+    "DEV_485_QUERY_1|noise0": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「日本」已含，参赛队伍信息不矛盾"
+    },
+    "DEV_29_QUERY_2|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「巴菲特」已含，商讨事项与董事会批核为补充"
+    },
+    "DEV_130_QUERY_0|noise5": {
+      "verdict": 1,
+      "cls": "A",
+      "note": "「女真」已含，完颜／阿骨打渊源事实正确不矛盾"
+    }
+  }
+}

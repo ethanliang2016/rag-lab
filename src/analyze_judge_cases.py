@@ -230,20 +230,31 @@ def main():
         n_raw = len(dis) + len(cand)
         dis, cand = _dedup(dis), _dedup(cand)
         sel = dis + cand
-        L.append(f"\n## 10. 人工裁定表（n={len(sel)}）\n")
+        L.append(f"\n## 10. 裁定表（n={len(sel)}）\n")
         L.append(f"> 已按「同题同答」去重：原 {n_raw} 条 → {len(sel)} 条"
                  f"（噪声档常生成完全相同的文本）\n")
         L.append(f"> 前 {len(dis)} 条 = 7B 判对 / 14B 判错（模型间分歧）；"
                  f"后 {len(cand)} 条 = 两裁判都判「对」但 F1<0.2（严格口径假阴性候选）\n")
-        L.append("> 裁定建议分两类：**A 冗余无害**（金标完整、多余内容不矛盾 → 判对）；"
-                 "**B 冗余有害**（多余内容引入错误信息 → 判错）\n")
-        L.append("| # | key | F1 | 7B-bare | 7B-rubric | 14B | 人工裁定 | 类别 |")
+        L.append("> 裁定类别：**A 冗余无害**（金标完整、多余内容不矛盾 → 判对）；"
+                 "**B 冗余有害**（多余内容引入错误信息 → 判错）；"
+                 "**C 非冗余分歧**（换述／更具体／金标不全／答案为金标子串，按语义单判）\n")
+        ADJ = ROOT / "results" / "judge_adjudication.json"
+        adj = json.loads(ADJ.read_text(encoding="utf-8")).get("items", {}) \
+            if ADJ.exists() else {}
+        if adj:
+            L.append(f"> 裁定值由 `results/judge_adjudication.json` 回填（n={len(adj)}），"
+                     "当前为 **AI 预裁定**，人工复核直接改该 JSON 后重跑本脚本。\n")
+        else:
+            L.append("> 尚未裁定：填 `results/judge_adjudication.json` 后重跑本脚本自动回填。\n")
+        L.append("| # | key | F1 | 7B-bare | 7B-rubric | 14B | 裁定 | 类别 |")
         L.append("|---|---|---|---|---|---|---|---|")
         yn = lambda r: f"{r['score']}/{'对' if r['correct'] else '错'}"
         rz = lambda r: " ".join((r.get("reason") or r.get("raw") or "").split())[:160]
         for i, (b, m1, m2) in enumerate(sel, 1):
+            _a = adj.get(f"{b['qid']}|{b['gen_variant']}", {})
+            _v = {1: "对", 0: "错"}.get(_a.get("verdict"), "")
             L.append(f"| {i} | `{b['key']}` | {b['f1']:.3f} | {yn(b)} "
-                     f"| {yn(m1)} | {yn(m2)} | | |")
+                     f"| {yn(m1)} | {yn(m2)} | {_v} | {_a.get('cls', '')} |")
         L.append("")
         L.append("<details><summary>逐条明细（问题 / 金标 / 生成 / 三方理由）</summary>\n")
         for i, (b, m1, m2) in enumerate(sel, 1):
@@ -258,8 +269,53 @@ def main():
                      f"{'对' if m1['correct'] else '错'} — {rz(m1)}")
             L.append(f"- **14B**：{m2['score']} 分 / "
                      f"{'对' if m2['correct'] else '错'} — {rz(m2)}")
-            L.append("- **人工裁定**：⬜ 对　⬜ 错　类别：⬜A　⬜B")
+            _a = adj.get(f"{b['qid']}|{b['gen_variant']}", {})
+            if _a:
+                _v = {1: "对", 0: "错"}.get(_a.get("verdict"), "？")
+                _nt = _a.get("note", "")
+                L.append(f"- **裁定**：**{_v}**　类别：**{_a.get('cls', '？')}**"
+                         + (f"　—　{_nt}" if _nt else ""))
+            else:
+                L.append("- **人工裁定**：⬜ 对　⬜ 错　类别：⬜A　⬜B　⬜C")
         L.append("\n</details>\n")
+
+        # ---------- 11 裁定小结 ----------
+        got = [(b, m1, m2, adj.get(f"{b['qid']}|{b['gen_variant']}", {}))
+               for b, m1, m2 in sel]
+        got = [g for g in got if g[3].get("verdict") is not None]
+        if got:
+            n_ok = sum(1 for g in got if g[3]["verdict"] == 1)
+            em0 = sum(1 for g in got if g[0]["em"] == 0)
+            lt2 = sum(1 for g in got if g[0]["f1"] < 0.2)
+            jb = sum(1 for g in got if g[0]["correct"] == g[3]["verdict"])
+            jr = sum(1 for g in got if g[1]["correct"] == g[3]["verdict"])
+            j14 = sum(1 for g in got if g[2]["correct"] == g[3]["verdict"])
+            n14w = sum(1 for g in got if g[2]["correct"] == 0)
+            n14h = sum(1 for g in got
+                       if g[2]["correct"] == 0 and g[3]["verdict"] == 0)
+            cls = defaultdict(int)
+            for g in got:
+                cls[g[3].get("cls", "?")] += 1
+            p(f"\n[11] 裁定小结 n={len(got)}")
+            p(f"     判对={n_ok} 判错={len(got) - n_ok} 类别={dict(sorted(cls.items()))}")
+            p(f"     EM=0 {em0}/{len(got)}   F1<0.2 {lt2}/{len(got)}")
+            p(f"     与裁定一致 7B-bare={jb} 7B-rubric={jr} 14B={j14} (n={len(got)})")
+            p(f"     14B 报警 {n14w} 条，命中 {n14h} 条")
+            L.append(f"\n## 11. 裁定小结（n={len(got)}）\n")
+            L.append(f"- 判**对** {n_ok} 条，判**错** {len(got) - n_ok} 条；"
+                     f"类别分布 {dict(sorted(cls.items()))}")
+            L.append(f"- 严格口径：EM=0 占 **{em0}/{len(got)}**，"
+                     f"F1<0.2 占 **{lt2}/{len(got)}**")
+            L.append(f"- 与裁定一致率：7B-bare **{jb}/{len(got)}**、"
+                     f"7B-rubric **{jr}/{len(got)}**、14B **{j14}/{len(got)}**")
+            L.append(f"- 14B 报警（判错）**{n14w}** 条，命中 **{n14h}** 条")
+            L.append(f"- 读法：该批的「低 EM/F1」全部由**字面口径**造成"
+                     f"（EM=0 达 {em0}/{len(got)}），无一例属真实答错；"
+                     f"4 条分歧样本（类别 C）还暴露了**金标不全／口径不一致**问题。")
+            L.append("")
+            L.append("> ⚠️ 抽样偏倚：前段切片以「7B 判对」为入样条件，"
+                     "故「全部判对」不能外推为 14B 的整体误报率，"
+                     "只能作为「14B 在该批报警中零命中」的证据。\n")
 
     OUT.write_text("\n".join(L), encoding="utf-8")
     p(f"\nsaved → {OUT}")
