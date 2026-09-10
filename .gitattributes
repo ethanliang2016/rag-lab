@@ -1,0 +1,2 @@
+# 跨平台换行统一:shell 脚本必须 LF,否则 Linux(AutoDL)上执行会因 \r 报错
+*.sh text eol=lf

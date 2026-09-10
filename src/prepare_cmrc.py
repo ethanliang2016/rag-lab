@@ -78,6 +78,8 @@ def main():
     ap.add_argument("--limit-docs", type=int, default=None,
                     help="只取 validation 前 N 篇(冒烟用)")
     ap.add_argument("--force", action="store_true", help="强制重建(删除既有产物)")
+    ap.add_argument("--no-index", action="store_true",
+                    help="跳过 bge 索引构建(只出 sample.jsonl/切块,本地对齐口径用)")
     args = ap.parse_args()
 
     from datasets import load_dataset
@@ -137,6 +139,10 @@ def main():
         for g in sample:
             f.write(json.dumps(g, ensure_ascii=False) + "\n")
     print(f"sample: {len(sample)}")
+
+    if args.no_index:
+        print(f"--no-index: 已在 {DATA_DIR} 生成 passages/cmrc_val/sample,跳过 bge 索引")
+        return
 
     # ---------- 3. bge 索引 ----------
     out_npz = DATA_DIR / "cmrc_blocks.npz"
