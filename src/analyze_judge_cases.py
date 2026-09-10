@@ -2,7 +2,7 @@
 """实验四补充分析:一致性细节 + 分歧案例导出。
 
 输入:results/judge_scores.jsonl, data/cmrc/judge_set.jsonl
-输出:results/judge_cases.md(可直接贴进文章) + 终端摘要
+输出:results/judge_cases.md(可直接贴进文章) + results/judge_review_checklist.md(离线复核工作表) + 终端摘要
 
 看十件事:
   1 裁判自洽性: score>=4 是否等于判定"对"(是否存在 5 分判错 / 3 分判对)
@@ -15,6 +15,7 @@
   8 bare 低分判对 × rubric 配对: 分数尺度由提示词决定, 判定方向不变
   9 F1 分档 × 14B 判定: 7B/14B 分歧是否集中在低 F1 段
  10 人工裁定表: 7B/14B 分歧 + 严格口径假阴性候选(含问/金/答/三方理由)
+ 11 复核清单: 21 条裁定的空白勾选工作表(独立文件, 离线/打印逐条复核)
 
 用法: python src/analyze_judge_cases.py
 """
@@ -316,6 +317,121 @@ def main():
             L.append("> ⚠️ 抽样偏倚：前段切片以「7B 判对」为入样条件，"
                      "故「全部判对」不能外推为 14B 的整体误报率，"
                      "只能作为「14B 在该批报警中零命中」的证据。\n")
+
+    # ---------- 12 人工复核清单（独立文件） ----------
+    def write_checklist(sel, dis, adj, items):
+        """把 21 条裁定渲染成一份可离线/可打印的空白勾选工作表。
+
+        与第 10 节共用同一份 sel 与 adj，故人工复核结论永远与裁定表一致。
+        """
+        CK = ROOT / "results" / "judge_review_checklist.md"
+        n_sel, n_dis = len(sel), len(dis)
+        n_em0 = sum(1 for b, _, _ in sel if b["em"] == 0)
+        adj_of = lambda b: adj.get(f"{b['qid']}|{b['gen_variant']}", {})
+        n_pre = sum(1 for b, _, _ in sel if adj_of(b).get("verdict") is not None)
+        n_pre_ok = sum(1 for b, _, _ in sel if adj_of(b).get("verdict") == 1)
+
+        K = ["# 实验四 · 裁定复核清单（离线工作表）", ""]
+        K.append("> 由 `src/analyze_judge_cases.py` 生成。**结论不要写在本文件里** —— "
+                 "写进 `results/judge_adjudication.json`，重跑脚本后本文件与 "
+                 "`judge_cases.md` 第 10/11 节同步刷新。")
+        K.append("")
+        K.append("## 怎么用")
+        K.append("")
+        K.append("1. 先只读每条的 **问 / 金 / 答 + 三方理由**，自己判一个对错；")
+        K.append("2. 再展开条末「AI 预裁定」对照（故意放最后，避免被锚定）；")
+        K.append("3. 想推翻就改 `results/judge_adjudication.json` 里对应 key 的 "
+                 "`verdict`（`1`=对 / `0`=错）与 `cls`（A/B/C）；")
+        K.append("4. 跑 `python src/analyze_judge_cases.py`，第 10/11 节自动回填。")
+        K.append("")
+        K.append("## 裁定规则")
+        K.append("")
+        K.append("| 类别 | 含义 | 判 |")
+        K.append("|---|---|---|")
+        K.append("| **A 冗余无害** | 金标内容完整，多出来的部分不构成矛盾 | 判**对** |")
+        K.append("| **B 冗余有害** | 多出来的部分引入了错误信息 | 判**错** |")
+        K.append("| **C 非冗余分歧** | 换述 / 更具体 / 金标不全 / 答案是金标子串 | 按语义单判 |")
+        K.append("")
+        K.append("## 本批构成")
+        K.append("")
+        K.append(f"- 共 **{n_sel}** 条，EM 全部为 0（`{n_em0}/{n_sel}`）")
+        K.append(f"- **第一组 #1–#{n_dis}**：模型分歧条（7B 判对 · 14B 判错）")
+        K.append(f"- **第二组 #{n_dis + 1}–#{n_sel}**：三方全判对但 F1<0.2"
+                 "（严格口径假阴性候选）")
+        if n_pre:
+            K.append(f"- AI 预裁定已回填 **{n_pre}/{n_sel}** 条（判对 {n_pre_ok} / "
+                     f"判错 {n_pre - n_pre_ok}），**待人工复核**")
+        else:
+            K.append("- AI 预裁定未回填（`judge_adjudication.json` 缺失或为空）")
+        K.append("")
+        K.append("---")
+        K.append("")
+
+        for i, (b, m1, m2) in enumerate(sel, 1):
+            if i == 1:
+                K.append(f"# 第一组 · 模型分歧条（n={n_dis}）")
+                K.append("")
+                K.append("> 7B 判对、14B 判错。复核重点：14B 的判错理由成不成立。")
+                K.append("")
+            if i == n_dis + 1:
+                K.append("---")
+                K.append("")
+                K.append(f"# 第二组 · 三方全判对但 F1<0.2（n={n_sel - n_dis}）")
+                K.append("")
+                K.append("> 三方都判对、字面 F1 极低。复核重点：答案是否真的比金标"
+                         "更具体/更切题 —— 这一组决定「严格口径假阴性」的证据强度。")
+                K.append("")
+            it = items.get(b["key"].split("#")[0], {})
+            a = adj_of(b)
+            K.append(f"## {i} / {n_sel} · `{b['key']}`")
+            K.append("")
+            K.append(f"**EM={b['em']}　F1={b['f1']:.3f}**")
+            K.append("")
+            K.append(f"- **问**：{it.get('question', '')}")
+            K.append(f"- **金**：{it.get('gold', '')}")
+            K.append(f"- **答**：{it.get('generated', '')}")
+            K.append(f"- `7B-bare`　**{yn(b)}**　—　{rz(b)}")
+            K.append(f"- `7B-rubric`　**{yn(m1)}**　—　{rz(m1)}")
+            K.append(f"- `14B`　**{yn(m2)}**　—　{rz(m2)}")
+            K.append("")
+            K.append("> **我的复核**　`[ ] 对`　`[ ] 错`　　类别：`[ ] A`　`[ ] B`　"
+                     "`[ ] C`　　备注：_______________")
+            K.append("")
+            if a:
+                _v = {1: "对", 0: "错"}.get(a.get("verdict"), "？")
+                K.append("<details><summary>AI 预裁定（参考，先判完再看）</summary>")
+                K.append("")
+                K.append(f"**判{_v}**　类别 **{a.get('cls', '？')}**　—　{a.get('note', '')}")
+                K.append("")
+                K.append("</details>")
+            else:
+                K.append("<details><summary>AI 预裁定</summary>")
+                K.append("")
+                K.append("**未回填**")
+                K.append("")
+                K.append("</details>")
+            K.append("")
+
+        K.append("---")
+        K.append("")
+        K.append("# 誊清区")
+        K.append("")
+        K.append("> 勾完后把结论集中记在这里；与 AI 预裁定不同的行，就是你要改 JSON 的行。")
+        K.append("")
+        K.append("| # | key | 我的裁定 | 类别 | AI 预裁定 |")
+        K.append("|---|---|---|---|---|")
+        for i, (b, _, _) in enumerate(sel, 1):
+            a = adj_of(b)
+            _v = {1: "对", 0: "错"}.get(a.get("verdict"), "—")
+            K.append(f"| {i} | `{b['key']}` | | | {_v} / {a.get('cls', '—')} |")
+        K.append("")
+        K.append(f"合计：⬜ 判对 ____　⬜ 判错 ____　（共 {n_sel} 条）")
+        K.append("")
+        CK.write_text("\n".join(K), encoding="utf-8")
+        p(f"saved → {CK}")
+
+    if tri:
+        write_checklist(sel, dis, adj, items)
 
     OUT.write_text("\n".join(L), encoding="utf-8")
     p(f"\nsaved → {OUT}")

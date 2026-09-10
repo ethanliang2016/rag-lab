@@ -128,6 +128,7 @@ python src/align_judge_set.py      # 裁判评估集:与实验三结果逐条对
 python src/run_judge.py            # 四组裁判跑批(需 GPU;AutoDL vLLM/transformers)
 python src/score_judge.py          # 指标汇总 → results/judge_metrics.json
 python src/analyze_judge_cases.py  # 自洽性/一致性/分档分析 + 裁定表/小结 → results/judge_cases.md
+                                   # 同时生成离线复核工作表 → results/judge_review_checklist.md
 ```
 
 `data/cmrc/judge_set.jsonl` 不入 git(含 CMRC 原文与金标),跑 `align_judge_set.py` 自取,口径与实验三一致。
@@ -189,7 +190,7 @@ F1 掉 8.8pp、EM 掉 6.8pp,裁判判对率只动 0.13pp,翻转 27 vs 26(近乎�
 
 锚点区分度成立,方向全对。但 `high_f1_low_em`(EM=0 而 F1=0.946)被判满分——裁判与 EM 在「复述完整但字面不等」上的分歧是系统性的。
 
-**⑦ 分歧案例逐条裁定**(21 条,明细见 `results/judge_cases.md` 第 10/11 节):
+**⑦ 分歧案例逐条裁定**(21 条,明细见 `results/judge_cases.md` 第 10/11 节;可离线逐条勾选的空白工作表见 `results/judge_review_checklist.md`):
 
 切片 = 7B 判对 / 14B 判错 16 条 + 双判对但 F1<0.2 的 5 条,按「同题同答」去重后 21 条逐条判读:
 
@@ -229,7 +230,7 @@ src/score_em_f1.py       实验三:字级 EM/F1 分层汇总与归因
 src/align_judge_set.py   实验四:裁判评估集构造(与实验三结果逐条对齐)
 src/run_judge.py         实验四:四组裁判跑批(main / prompt 三档 / judge2 / anchor)
 src/score_judge.py       实验四:裁判指标汇总(混淆矩阵/一致率/kappa/F1 分档相关性)
-src/analyze_judge_cases.py  实验四:自洽性/一致性/分档分析 + 人工裁定表
+src/analyze_judge_cases.py  实验四:自洽性/一致性/分档分析 + 人工裁定表 + 复核清单
 results/results.json     实验一跑批结果(指标 + 失效案例逐题存档)
 results/rerank_results.json  实验二跑批结果
 results/rerank_checkpoint.jsonl 实验二逐条 checkpoint(断电/关机后 --resume 续跑用)
@@ -240,6 +241,7 @@ results/judge_scores.jsonl    实验四逐条裁判打分(13,708 条 × 四组)
 results/judge_metrics.json    实验四裁判指标汇总(分组混淆矩阵/分档/相关性)
 results/judge_cases.md        实验四案例分析(自洽性/一致性/分档/裁定表+小结,1~11 节)
 results/judge_adjudication.json  实验四裁定结果(21 条;改该文件后重跑分析脚本自动回填)
+results/judge_review_checklist.md 实验四裁定复核离线性工作表(逐条问/金/答+三方理由+空白勾选+誊清区,脚本生成)
 results/autodl训练结果-20260910/  实验四 AutoDL 下载件归档(远端旧版 md 存证)
 results/writing/             写作辅助产物(逐题案例 cases.json / 宽松口径 lenient.json / figures)
 ```
