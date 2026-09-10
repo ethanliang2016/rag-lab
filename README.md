@@ -1,12 +1,13 @@
 # rag-lab
 
-> RAG 链路实测的配套实验仓库(CSDN「RAG 链路实测」专栏)。一个仓库,三个实验:每篇文章对应一组可复现实验,数据、脚本、结果全量入库或一条命令拉取。
+> RAG 链路实测的配套实验仓库(CSDN「RAG 链路实测」专栏)。一个仓库,四个实验:每篇文章对应一组可复现实验,数据、脚本、结果全量入库或一条命令拉取。
 
 | # | 文章 | 实验 | 状态 |
 |---|---|---|---|
 | 1 | [RAG 分块策略实测](https://blog.csdn.net/weixin_39885962/article/details/164459646) | 10 篇中文技术文 × 100 题 × 9 组分块配置 | v1.1 已发布 |
 | 2 | [RAG 重排序实测](https://blog.csdn.net/weixin_39885962/article/details/164712425) | DuReader-retrieval 93,885 段落 × 500 真实查询 × 召回/重排对照 | v1 已发布(2026-09-09) |
 | 3 | [RAG 生成层实测](https://blog.csdn.net/weixin_39885962/article/details/164747501) | CMRC2018 dev 3,219 题 × 三档上下文 × Qwen2.5-7B 生成 | v1 已发布(2026-09-09 16:20;6,208 次生成,AutoDL RTX 4090D 跑批) |
+| 4 | RAG 评测可信性实测 | 6,208 次生成 × 四组 LLM 裁判(提示词三档 / 双模型规模 / 人工锚点),13,708 条打分 | v1 待发布 |
 
 ## 实验一:分块策略实测
 
@@ -111,6 +112,83 @@ EM 三档几乎持平,F1 自头至尾单调下降 2.7pp。位置影响弱:对"�
 
 检索命中率 85%,但未命中组的端到端 EM 直接归零、F1 腰斩(21.3%)——检索层约 15% 的 miss 是生成层无法补救的硬损耗,与实验二结论互相印证。
 
+## 实验四:评测可信性实测(LLM-as-judge)
+
+实验三用确定性 EM/F1 衡量回答质量,但工程上更常用 LLM 当裁判。本实验把「裁判本身可不可信」当实验对象:同一批生成结果,换提示词、换模型规模、对照人工锚点。
+
+- **数据**:实验三 6,208 次生成结果(3,219 题固定种子抽 800 题的完整三档),按 `(qid, gen_variant)` 与生成结果逐条对齐成裁判评估集
+- **变量**:
+  - **提示词三档**:bare(直接判) / rubric(给评分标准) / cot(先推理再判),各 1,600 条(oracle_noise 子集)
+  - **裁判模型**:Qwen2.5-7B-Instruct(主) / Qwen2.5-14B-Instruct-AWQ(对照),同 rubric 档 2,400 条共有样本
+  - **人工锚点**:wrong / abstain / partial / high_f1_low_em / perfect 五类各 60 条,共 300 条
+- **口径**:裁判输出「0~5 分 + 对/错判定」,`score>=4` 记「对」,再与 EM 口径对照(混淆矩阵 / 一致率 / kappa / F1 分档相关性)
+
+```bash
+python src/align_judge_set.py      # 裁判评估集:与实验三结果逐条对齐
+python src/run_judge.py            # 四组裁判跑批(需 GPU;AutoDL vLLM/transformers)
+python src/score_judge.py          # 指标汇总 → results/judge_metrics.json
+python src/analyze_judge_cases.py  # 自洽性/一致性/分档分析 + 人工裁定表 → results/judge_cases.md
+```
+
+`data/cmrc/judge_set.jsonl` 不入 git(含 CMRC 原文与金标),跑 `align_judge_set.py` 自取,口径与实验三一致。
+
+### 实测结果(2026-09-10)
+
+四组裁判共 **13,708 条**打分,零解析失败(`parse_fail=0`)。
+
+**① 提示词决定分数尺度,而非判定方向**(oracle_noise 子集,n=1,600):
+
+| 提示词 | 均分 | 与 EM 一致率 | 自洽矛盾率 |
+|---|---|---|---|
+| bare | 4.257 | 89.9% | **4.88%** |
+| cot | 4.223 | 93.7% | 0.69% |
+| rubric | 4.018 | 94.5% | **0.25%** |
+
+最反直觉的一点:bare 均分**最高**,一致率却**最低**。对 bare 判定「对」但分数 <4 的 78 条做配对,换成 rubric 后 **78/78 判定一致**、均分从 **2.77 → 4.00**(全部 score=4,零方差)——判定方向没变,分数量尺被 rubric 顶到了满分。
+
+**② 裁判对真实质量下降几乎不响应**(noise0 vs noise5,同题配对 n=800):
+
+| 指标 | noise0 | noise5 | Δ |
+|---|---|---|---|
+| 裁判判对率 | 94.63% | 94.50% | **−0.13pp** |
+| 字级 F1 | 58.22% | 49.44% | **−8.78pp** |
+| EM | 10.87% | 4.13% | **−6.75pp** |
+
+F1 掉 8.8pp、EM 掉 6.8pp,裁判判对率只动 0.13pp,翻转 27 vs 26(近乎对称)。判对率在 94.6% 附近**饱和、失去分辨率**。
+
+**③ 双裁判一致性**(7B vs 14B,同 rubric 档,共有样本 n=2,400):
+
+| 指标 | 值 |
+|---|---|
+| 原始一致率 Po | 92.92% |
+| Cohen's kappa | 0.6217 |
+| PABAK | 0.8583 |
+| 2×2 | 都对 2,066 / 都错 164 / 7B错·14B对 24 / 7B对·14B错 146 |
+
+**④ 分歧源于「模糊度」而非「严格度」**——把 78 条配对按 F1 分档看 14B 翻案率,呈 **V 形而非单调**,峰值在中段:
+
+| F1 区间 | n | 14B 判对 | 翻案率 |
+|---|---|---|---|
+| [0, 0.2) | 28 | 22 | 21.4% |
+| [0.2, 0.5) | 37 | 24 | **35.1%** |
+| [0.5, 1.01) | 13 | 12 | 7.7% |
+
+最烂的一档两个裁判反而高度一致地判「对」——EM/F1 判它错、两个模型都判它对,**严格口径下的假阴性占 28/78**。所以 7B/14B 差异不是「严格度差一档」,而是「对模糊答案的容忍阈值不同」。
+
+**⑤ 复现噪声地板 1.25%**:同提示词、同模型、同批样本跑两遍(main-rubric vs prompt-rubric,n=1,600),判定不同 3 条(0.19%)、分数不同 20 条(1.25%)。bare 的 4.88% 是它的 3.9 倍,分数尺度差异是真实效应而非跑批抖动。
+
+**⑥ 人工锚点校准**(5 类 × 60 条,方向性校准):
+
+| 类别 | 均分 | 判对率 |
+|---|---|---|
+| perfect | 4.87 | 100% |
+| high_f1_low_em | 4.55 | 100% |
+| partial | 4.12 | 100% |
+| wrong | 1.18 | 18.3% |
+| abstain | 0.00 | 0% |
+
+锚点区分度成立,方向全对。但 `high_f1_low_em`(EM=0 而 F1=0.946)被判满分——裁判与 EM 在「复述完整但字面不等」上的分歧是系统性的。
+
 ## 目录
 
 ```
@@ -120,6 +198,7 @@ questions-frag-*.jsonl   实验一出题分片(合并前的工作文件,留档�
 configs/                 实验一 9 组实验配置(3 策略 × 3 粒度)
 data/                    实验二数据(gitignored: DuReader 原始包+解析产物+持久索引)
 data/cmrc/               实验三数据(gitignored: CMRC 原始包+解析产物+bge 索引)
+data/cmrc/judge_set.jsonl  实验四裁判评估集(gitignored: 与实验三结果逐条对齐后的样本+问/金/答)
 src/ingest.py            实验一语料清洗入库(剥系列导航行/状态注记行)
 src/chunkers.py          实验一三种分块策略实现 + 代码块切断统计
 src/merge_questions.py   实验一题库分片合并 + 结构校验 + 跨篇撞题检查
@@ -132,19 +211,27 @@ src/run_rerank.py        实验二主评测:精确召回 → 重排 → 指标/�
 src/prepare_cmrc.py      实验三:CMRC 切块+offset 金标+bge 索引+800 题抽样
 src/run_generate.py      实验三:三档上下文 × vLLM/transformers 生成跑批(支持 --resume)
 src/score_em_f1.py       实验三:字级 EM/F1 分层汇总与归因
+src/align_judge_set.py   实验四:裁判评估集构造(与实验三结果逐条对齐)
+src/run_judge.py         实验四:四组裁判跑批(main / prompt 三档 / judge2 / anchor)
+src/score_judge.py       实验四:裁判指标汇总(混淆矩阵/一致率/kappa/F1 分档相关性)
+src/analyze_judge_cases.py  实验四:自洽性/一致性/分档分析 + 人工裁定表
 results/results.json     实验一跑批结果(指标 + 失效案例逐题存档)
 results/rerank_results.json  实验二跑批结果
 results/rerank_checkpoint.jsonl 实验二逐条 checkpoint(断电/关机后 --resume 续跑用)
 results/cmrc_gen.jsonl       实验三逐条生成结果(含上下文构造元信息)
 results/cmrc_gen_metrics.json 实验三分层指标汇总
-results/autodl训练结果-20260909/  AutoDL 下载件归档(jsonl + metrics)
+results/autodl训练结果-20260909/  实验三 AutoDL 下载件归档(cmrc_gen.jsonl + metrics)
+results/judge_scores.jsonl    实验四逐条裁判打分(13,708 条 × 四组)
+results/judge_metrics.json    实验四裁判指标汇总(分组混淆矩阵/分档/相关性)
+results/judge_cases.md        实验四案例分析(自洽性/一致性/分档/裁定表,1~10 节)
+results/autodl训练结果-20260910/  实验四 AutoDL 下载件归档(远端旧版 md 存证)
 results/writing/             写作辅助产物(逐题案例 cases.json / 宽松口径 lenient.json / figures)
 ```
 
 ## 指标口径
 
-实验一:Hit@1 / Hit@5 / MRR@5,按 A/B 档分层,ground truth 在文章级。实验二:Hit@1/5/10、MRR@10,金标注在段落级,top-k 含 ≥1 正例记 hit。实验三:字级 EM(规范化后与答案逐字相等)/ F1(答案与预测的字集重合),按位置三档(top/mid/bottom)、噪声四档(noise0/1/3/5)、RAG 命中/缺失分层;CMRC 为抽取式任务,只测"从上下文定位并复述答案",不与纯 MRC leaderboard 直接对比。三者均为小样本诚实口径,报分层观察,不做显著性检验;实验二语料池为 dev 候选池(非 866k 全库),MRR 不与官方 leaderboard 直接对比。
+实验一:Hit@1 / Hit@5 / MRR@5,按 A/B 档分层,ground truth 在文章级。实验二:Hit@1/5/10、MRR@10,金标注在段落级,top-k 含 ≥1 正例记 hit。实验三:字级 EM(规范化后与答案逐字相等)/ F1(答案与预测的字集重合),按位置三档(top/mid/bottom)、噪声四档(noise0/1/3/5)、RAG 命中/缺失分层;CMRC 为抽取式任务,只测"从上下文定位并复述答案",不与纯 MRC leaderboard 直接对比。三者均为小样本诚实口径,报分层观察,不做显著性检验;实验二语料池为 dev 候选池(非 866k 全库),MRR 不与官方 leaderboard 直接对比。实验四:裁判输出「0~5 分 + 对/错」,`score>=4` 记「对」,与 EM 口径对照给一致率/混淆矩阵,另报 Cohen's kappa 与 PABAK 校正偶然一致;噪声敏感度用同题配对差值;人工锚点 5 类各 60 条仅作方向性校准,同样不做显著性检验。提示词三档实验仅覆盖 oracle_noise 子集(1,600 条),结论不外推到 pos/rag 语境。
 
 ## License
 
-MIT。实验一语料为本人原创文章,测试集随语料同授权;实验二数据来自 DuReader-retrieval(百度/BAAI),经 `download_data.py` 自 hf-mirror 拉取,遵循其原始许可(研究用途);实验三数据来自 CMRC2018,经 `prepare_cmrc.py` 自 hf-mirror 拉取,遵循其原始许可(研究用途)。
+MIT。实验一语料为本人原创文章,测试集随语料同授权;实验二数据来自 DuReader-retrieval(百度/BAAI),经 `download_data.py` 自 hf-mirror 拉取,遵循其原始许可(研究用途);实验三数据来自 CMRC2018,经 `prepare_cmrc.py` 自 hf-mirror 拉取,遵循其原始许可(研究用途);实验四复用同一数据(经 `align_judge_set.py` 对齐),许可同上。
