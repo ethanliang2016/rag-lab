@@ -1,0 +1,214 @@
+{
+ "fig1_f1_bins": [
+  {
+   "bin": "[0.0,0.2)",
+   "n": 980,
+   "mean_score": 3.035,
+   "judge_acc": 0.732,
+   "em": 0.0
+  },
+  {
+   "bin": "[0.2,0.4)",
+   "n": 1467,
+   "mean_score": 3.939,
+   "judge_acc": 0.959,
+   "em": 0.0
+  },
+  {
+   "bin": "[0.4,0.6)",
+   "n": 1300,
+   "mean_score": 4.06,
+   "judge_acc": 0.986,
+   "em": 0.0
+  },
+  {
+   "bin": "[0.6,0.8)",
+   "n": 1219,
+   "mean_score": 4.199,
+   "judge_acc": 0.993,
+   "em": 0.0
+  },
+  {
+   "bin": "[0.8,1.0)",
+   "n": 1242,
+   "mean_score": 4.539,
+   "judge_acc": 0.997,
+   "em": 0.3
+  }
+ ],
+ "fig2_prompt": {
+  "bare": {
+   "mean_score": 4.2569,
+   "agree_em": 0.8988,
+   "pass_rate": 0.9012,
+   "inconsistent": 4.875,
+   "inconsistent_n": 78,
+   "n": 1600
+  },
+  "rubric": {
+   "mean_score": 4.0181,
+   "agree_em": 0.945,
+   "pass_rate": 0.945,
+   "inconsistent": 0.25,
+   "inconsistent_n": 4,
+   "n": 1600
+  },
+  "cot": {
+   "mean_score": 4.2231,
+   "agree_em": 0.9369,
+   "pass_rate": 0.9463,
+   "inconsistent": 0.6875,
+   "inconsistent_n": 11,
+   "n": 1600
+  }
+ },
+ "fig3_noise_pair": {
+  "裁判判对率": {
+   "noise0": 94.63000000000001,
+   "noise5": 94.5,
+   "delta": -0.13000000000000966
+  },
+  "字级 F1": {
+   "noise0": 58.220000000000006,
+   "noise5": 49.44,
+   "delta": -8.780000000000008
+  },
+  "EM": {
+   "noise0": 10.870000000000001,
+   "noise5": 4.130000000000001,
+   "delta": -6.74
+  }
+ },
+ "fig4_tri": {
+  "n": 78,
+  "bare_mean_score": 2.7692,
+  "rubric_mean_score": 4.0,
+  "judge_agree": 78,
+  "judge2_overrule": 20,
+  "bands": [
+   {
+    "band": "[0, 0.2)",
+    "n": 28,
+    "overrule_rate": 21.4286
+   },
+   {
+    "band": "[0.2, 0.5)",
+    "n": 37,
+    "overrule_rate": 35.1351
+   },
+   {
+    "band": "[0.5, 1]",
+    "n": 13,
+    "overrule_rate": 7.6923
+   }
+  ]
+ },
+ "main": {
+  "tag": "main|Qwen2.5-7B-Instruct|rubric|j1",
+  "n": 6208,
+  "mean_score": 3.9928,
+  "judge_acc": 0.9431,
+  "em": 0.0599,
+  "f1": 0.5113,
+  "confusion": {
+   "judge对_EM对": 368,
+   "judge对_EM错(假阳性)": 5487,
+   "judge错_EM对(假阴性)": 4,
+   "judge错_EM错": 349
+  },
+  "false_positive": 5487,
+  "false_negative": 4,
+  "pearson": 0.4965,
+  "spearman": 0.5342,
+  "parse_fail": 0,
+  "by_rag": {
+   "rag_hit": {
+    "n": 681,
+    "judge_acc": 0.9618,
+    "mean_score": 4.0338,
+    "f1": 0.485
+   },
+   "rag_miss": {
+    "n": 119,
+    "judge_acc": 0.3697,
+    "mean_score": 1.6303,
+    "f1": 0.2125
+   }
+  },
+  "zero_f1": {
+   "n": 183,
+   "scored": 183,
+   "mean_score": 0.1639,
+   "judge_acc": 0.0164,
+   "em": 0.0,
+   "f1": 0.0,
+   "parse_fail": 0
+  }
+ },
+ "judge2": {
+  "n": 2400,
+  "judge_acc": 0.8708,
+  "mean_score": 3.8775,
+  "pearson": 0.5774,
+  "spearman": 0.5918
+ },
+ "two_judges": {
+  "n_common": 2400,
+  "agreement": 0.9292,
+  "kappa": 0.6217,
+  "acc_a": 0.9217,
+  "acc_b": 0.8708
+ },
+ "anchor": {
+  "abstain": {
+   "n": 60,
+   "scored": 60,
+   "mean_score": 0.0,
+   "judge_acc": 0.0,
+   "em": 0.0,
+   "f1": 0.0096,
+   "parse_fail": 0
+  },
+  "high_f1_low_em": {
+   "n": 60,
+   "scored": 60,
+   "mean_score": 4.55,
+   "judge_acc": 1.0,
+   "em": 0.0,
+   "f1": 0.946,
+   "parse_fail": 0
+  },
+  "partial": {
+   "n": 60,
+   "scored": 60,
+   "mean_score": 4.1167,
+   "judge_acc": 1.0,
+   "em": 0.0,
+   "f1": 0.4239,
+   "parse_fail": 0
+  },
+  "perfect": {
+   "n": 60,
+   "scored": 60,
+   "mean_score": 4.8667,
+   "judge_acc": 1.0,
+   "em": 1.0,
+   "f1": 1.0,
+   "parse_fail": 0
+  },
+  "wrong": {
+   "n": 60,
+   "scored": 60,
+   "mean_score": 1.1833,
+   "judge_acc": 0.1833,
+   "em": 0.0,
+   "f1": 0.0152,
+   "parse_fail": 0
+  }
+ },
+ "repro_noise": {
+  "n": 1600,
+  "verdict_diff": 3,
+  "score_diff": 20
+ }
+}

@@ -7,7 +7,7 @@
 | 1 | [RAG 分块策略实测](https://blog.csdn.net/weixin_39885962/article/details/164459646) | 10 篇中文技术文 × 100 题 × 9 组分块配置 | v1.1 已发布 |
 | 2 | [RAG 重排序实测](https://blog.csdn.net/weixin_39885962/article/details/164712425) | DuReader-retrieval 93,885 段落 × 500 真实查询 × 召回/重排对照 | v1 已发布(2026-09-09) |
 | 3 | [RAG 生成层实测](https://blog.csdn.net/weixin_39885962/article/details/164747501) | CMRC2018 dev 3,219 题 × 三档上下文 × Qwen2.5-7B 生成 | v1 已发布(2026-09-09 16:20;6,208 次生成,AutoDL RTX 4090D 跑批) |
-| 4 | RAG 评测可信性实测 | 6,208 次生成 × 四组 LLM 裁判(提示词三档 / 双模型规模 / 人工锚点),13,708 条打分 | v1 待发布 |
+| 4 | RAG 评测可信性实测 | 6,208 次生成 × 四组 LLM 裁判(提示词三档 / 双模型规模 / 人工锚点),13,708 条打分 | v1 成稿(2026-09-10,待发布) |
 
 ## 实验一:分块策略实测
 
@@ -166,7 +166,7 @@ F1 掉 8.8pp、EM 掉 6.8pp,裁判判对率只动 0.13pp,翻转 27 vs 26(近乎�
 | PABAK | 0.8583 |
 | 2×2 | 都对 2,066 / 都错 164 / 7B错·14B对 24 / 7B对·14B错 146 |
 
-**④ 分歧源于「模糊度」而非「严格度」**——把 78 条配对按 F1 分档看 14B 翻案率,呈 **V 形而非单调**,峰值在中段:
+**④ 分歧源于「模糊度」而非「严格度」**——把 78 条配对按 F1 分档看 14B 翻案率,呈**非单调**(中间高、两端低),峰值在中段:
 
 | F1 区间 | n | 14B 判对 | 翻案率 |
 |---|---|---|---|
@@ -231,6 +231,7 @@ src/align_judge_set.py   实验四:裁判评估集构造(与实验三结果逐�
 src/run_judge.py         实验四:四组裁判跑批(main / prompt 三档 / judge2 / anchor)
 src/score_judge.py       实验四:裁判指标汇总(混淆矩阵/一致率/kappa/F1 分档相关性)
 src/analyze_judge_cases.py  实验四:自洽性/一致性/分档分析 + 人工裁定表 + 复核清单
+src/make_judge_figures.py   实验四:四张配图 + 数字摘要 → results/writing/exp4/
 results/results.json     实验一跑批结果(指标 + 失效案例逐题存档)
 results/rerank_results.json  实验二跑批结果
 results/rerank_checkpoint.jsonl 实验二逐条 checkpoint(断电/关机后 --resume 续跑用)
@@ -244,6 +245,7 @@ results/judge_adjudication.json  实验四裁定结果(21 条;改该文件后重
 results/judge_review_checklist.md 实验四裁定复核离线性工作表(逐条问/金/答+三方理由+空白勾选+誊清区,脚本生成)
 results/autodl训练结果-20260910/  实验四 AutoDL 下载件归档(远端旧版 md 存证)
 results/writing/             写作辅助产物(逐题案例 cases.json / 宽松口径 lenient.json / figures)
+results/writing/exp4/        实验四写作辅助产物(figures 四张配图 + summary.json 数字摘要)
 ```
 
 ## 指标口径
