@@ -8,6 +8,7 @@
 | 2 | [RAG 重排序实测](https://blog.csdn.net/weixin_39885962/article/details/164712425) | DuReader-retrieval 93,885 段落 × 500 真实查询 × 召回/重排对照 | v1 已发布(2026-09-09) |
 | 3 | [RAG 生成层实测](https://blog.csdn.net/weixin_39885962/article/details/164747501) | CMRC2018 dev 3,219 题 × 三档上下文 × Qwen2.5-7B 生成 | v1 已发布(2026-09-09 16:20;6,208 次生成,AutoDL RTX 4090D 跑批) |
 | 4 | [RAG 评测可信性实测](https://blog.csdn.net/weixin_39885962/article/details/164858910) | 6,208 次生成 × 四组 LLM 裁判(提示词三档 / 双模型规模 / 人工锚点),13,708 条打分 | v1 已发布(2026-09-10;13,708 条裁判输出,AutoDL RTX 4090D 跑批) |
+| 5 | RAG 查询路由实测 | DuReader 93,885 段落 KMeans 聚 4 域 × 五组路由(不路由/BM25/嵌入Top-1/嵌入Top-2/LLM),455 条可计分 query | v1 成稿(2026-09-11,待发布;本机 CPU 跑批) |
 
 ## 实验一:分块策略实测
 
@@ -232,6 +233,10 @@ src/run_judge.py         实验四:四组裁判跑批(main / prompt 三档 / jud
 src/score_judge.py       实验四:裁判指标汇总(混淆矩阵/一致率/kappa/F1 分档相关性)
 src/analyze_judge_cases.py  实验四:自洽性/一致性/分档分析 + 人工裁定表 + 复核清单
 src/make_judge_figures.py   实验四:四张配图 + 数字摘要 → results/writing/exp4/
+src/make_route_domains.py   实验五:KMeans 聚类构造知识域 + 确定每条 query 的真实域
+src/run_route_eval.py       实验五:五组路由对照跑批(不路由/BM25/嵌入Top-1/嵌入Top-2/LLM)
+src/score_route.py          实验五:路由准确率 / 端到端 / 误路由代价(盈亏平衡点)
+src/make_route_figures.py   实验五:三张配图 + 数字摘要 → results/writing/exp5/
 results/results.json     实验一跑批结果(指标 + 失效案例逐题存档)
 results/rerank_results.json  实验二跑批结果
 results/rerank_checkpoint.jsonl 实验二逐条 checkpoint(断电/关机后 --resume 续跑用)
@@ -246,6 +251,10 @@ results/judge_review_checklist.md 实验四裁定复核离线性工作表(逐条
 results/autodl训练结果-20260910/  实验四 AutoDL 下载件归档(远端旧版 md 存证)
 results/writing/             写作辅助产物(逐题案例 cases.json / 宽松口径 lenient.json / figures)
 results/writing/exp4/        实验四写作辅助产物(figures 四张配图 + summary.json 数字摘要)
+results/writing/exp5/        实验五写作辅助产物(figures 三张配图 + summary.json 数字摘要)
+results/route_eval.jsonl     实验五逐条结果(455 条 × 五组)
+results/route_metrics_full.json 实验五指标汇总(含误路由代价与盈亏平衡点)
+data/route/                  实验五知识域产物(domains.json 段落→域映射 / centroids.npy 簇质心)
 ```
 
 ## 指标口径
