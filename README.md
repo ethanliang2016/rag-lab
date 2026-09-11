@@ -254,7 +254,7 @@ results/writing/exp4/        实验四写作辅助产物(figures 四张配图 + 
 results/writing/exp5/        实验五写作辅助产物(figures 三张配图 + summary.json 数字摘要)
 results/route_eval.jsonl     实验五逐条结果(455 条 × 五组)
 results/route_metrics_full.json 实验五指标汇总(含误路由代价与盈亏平衡点)
-data/route/                  实验五知识域产物(domains.json 段落→域映射 / centroids.npy 簇质心)
+data/route/                  实验五知识域产物(gitignored: 由 make_route_domains.py 本地生成,段落→域映射 + 簇质心)
 ```
 
 ## 指标口径
